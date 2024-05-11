@@ -1,7 +1,6 @@
 import UIKit
 
 enum AppColors {
-   
     static let mainBlackColor = UIColor.init(hexString: "010F07")
     static let activeOrangeColor = UIColor.init(hexString: "EEA734")
     static let accentOrangeColor = UIColor.init(hexString: "F8B64C")

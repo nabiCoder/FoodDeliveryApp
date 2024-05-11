@@ -14,6 +14,7 @@
 		392C13142BEE3D9C00DBD790 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 392C13122BEE3D9C00DBD790 /* LaunchScreen.storyboard */; };
 		392C13202BEF8CC900DBD790 /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C131F2BEF8CC900DBD790 /* UIColor+Ext.swift */; };
 		392C13222BEF8D3100DBD790 /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13212BEF8D3100DBD790 /* AppColors.swift */; };
+		392C13282BEFD31200DBD790 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13272BEFD31200DBD790 /* Coordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		392C13152BEE3D9C00DBD790 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		392C131F2BEF8CC900DBD790 /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		392C13212BEF8D3100DBD790 /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		392C13272BEFD31200DBD790 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,8 @@
 		392C13062BEE3D9A00DBD790 /* FoodDeliveryApp */ = {
 			isa = PBXGroup;
 			children = (
+				392C13242BEFD15100DBD790 /* New Group1 */,
+				392C13232BEFD14A00DBD790 /* NavigationLayer */,
 				392C131D2BEF8BCB00DBD790 /* Resources */,
 				392C131C2BEE412C00DBD790 /* Application */,
 				392C130B2BEE3D9A00DBD790 /* ViewController.swift */,
@@ -100,6 +104,37 @@
 				392C131F2BEF8CC900DBD790 /* UIColor+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		392C13232BEFD14A00DBD790 /* NavigationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				392C13262BEFD2D600DBD790 /* Coordinators */,
+				392C13252BEFD2C500DBD790 /* Controllers */,
+			);
+			path = NavigationLayer;
+			sourceTree = "<group>";
+		};
+		392C13242BEFD15100DBD790 /* New Group1 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group1";
+			sourceTree = "<group>";
+		};
+		392C13252BEFD2C500DBD790 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		392C13262BEFD2D600DBD790 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				392C13272BEFD31200DBD790 /* Coordinator.swift */,
+			);
+			path = Coordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +209,7 @@
 			files = (
 				392C130C2BEE3D9A00DBD790 /* ViewController.swift in Sources */,
 				392C13202BEF8CC900DBD790 /* UIColor+Ext.swift in Sources */,
+				392C13282BEFD31200DBD790 /* Coordinator.swift in Sources */,
 				392C13082BEE3D9A00DBD790 /* AppDelegate.swift in Sources */,
 				392C13222BEF8D3100DBD790 /* AppColors.swift in Sources */,
 				392C130A2BEE3D9A00DBD790 /* SceneDelegate.swift in Sources */,
