@@ -2,7 +2,7 @@ import UIKit
 
 enum CoordinatorType {
     case app
-    case onbording
+    case onboarding
     case authorization
     case home
     case search
@@ -15,6 +15,7 @@ protocol CoordinatorProtocol: AnyObject {
     var type: CoordinatorType { get }
     var navigationController: UINavigationController? { get set }
     var finishDelegate: CoordinatorFinishDelegate? { get set }
+    
     func start()
     func finish()
 }
@@ -34,3 +35,33 @@ protocol CoordinatorFinishDelegate: AnyObject {
     func coordinatorDidFinish(childCoordinator: CoordinatorProtocol)
 }
 
+class Coordinator: CoordinatorProtocol {
+    var childCoordinators: [CoordinatorProtocol]
+    var type: CoordinatorType
+    var navigationController: UINavigationController?
+    var finishDelegate: CoordinatorFinishDelegate?
+    
+    init(childCoordinators: [CoordinatorProtocol] = [],
+         type: CoordinatorType,
+         navigationController: UINavigationController,
+         finishDelegate: CoordinatorFinishDelegate? = nil) {
+        self.childCoordinators = childCoordinators
+        self.type = type
+        self.navigationController = navigationController
+        self.finishDelegate = finishDelegate
+    }
+    
+    deinit {
+        print("Coordinator deinit")
+        childCoordinators.forEach({ $0.finishDelegate = nil })
+        childCoordinators.removeAll()
+    }
+    
+    func start() {
+        print("Coordinator start")
+    }
+    
+    func finish() {
+        print("Coordinator finish")
+    }
+}
