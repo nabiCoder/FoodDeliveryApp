@@ -17,6 +17,11 @@
 		392C13282BEFD31200DBD790 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13272BEFD31200DBD790 /* Coordinator.swift */; };
 		392C132A2BEFFD3600DBD790 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13292BEFFD3600DBD790 /* AppCoordinator.swift */; };
 		392C132C2BEFFEFD00DBD790 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C132B2BEFFEFD00DBD790 /* OnboardingCoordinator.swift */; };
+		392C132F2BF0D9D400DBD790 /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C132E2BF0D9D400DBD790 /* HomeCoordinator.swift */; };
+		392C13312BF0DA1600DBD790 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13302BF0DA1600DBD790 /* SearchCoordinator.swift */; };
+		392C13332BF0DA4500DBD790 /* OrdersCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13322BF0DA4500DBD790 /* OrdersCoordinator.swift */; };
+		392C13352BF0DA6700DBD790 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13342BF0DA6700DBD790 /* ProfileCoordinator.swift */; };
+		392C13372BF0DB2700DBD790 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13362BF0DB2700DBD790 /* TabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +37,11 @@
 		392C13272BEFD31200DBD790 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		392C13292BEFFD3600DBD790 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		392C132B2BEFFEFD00DBD790 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
+		392C132E2BF0D9D400DBD790 /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		392C13302BF0DA1600DBD790 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
+		392C13322BF0DA4500DBD790 /* OrdersCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCoordinator.swift; sourceTree = "<group>"; };
+		392C13342BF0DA6700DBD790 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		392C13362BF0DB2700DBD790 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +139,7 @@
 		392C13252BEFD2C500DBD790 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				392C13362BF0DB2700DBD790 /* TabBarController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -136,11 +147,23 @@
 		392C13262BEFD2D600DBD790 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				392C132D2BF0D98600DBD790 /* TabBarCoordinators */,
 				392C13272BEFD31200DBD790 /* Coordinator.swift */,
 				392C13292BEFFD3600DBD790 /* AppCoordinator.swift */,
 				392C132B2BEFFEFD00DBD790 /* OnboardingCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		392C132D2BF0D98600DBD790 /* TabBarCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				392C132E2BF0D9D400DBD790 /* HomeCoordinator.swift */,
+				392C13302BF0DA1600DBD790 /* SearchCoordinator.swift */,
+				392C13322BF0DA4500DBD790 /* OrdersCoordinator.swift */,
+				392C13342BF0DA6700DBD790 /* ProfileCoordinator.swift */,
+			);
+			path = TabBarCoordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,13 +237,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				392C130C2BEE3D9A00DBD790 /* ViewController.swift in Sources */,
+				392C13372BF0DB2700DBD790 /* TabBarController.swift in Sources */,
 				392C13202BEF8CC900DBD790 /* UIColor+Ext.swift in Sources */,
 				392C13282BEFD31200DBD790 /* Coordinator.swift in Sources */,
 				392C13082BEE3D9A00DBD790 /* AppDelegate.swift in Sources */,
+				392C13352BF0DA6700DBD790 /* ProfileCoordinator.swift in Sources */,
+				392C13332BF0DA4500DBD790 /* OrdersCoordinator.swift in Sources */,
 				392C13222BEF8D3100DBD790 /* AppColors.swift in Sources */,
 				392C132C2BEFFEFD00DBD790 /* OnboardingCoordinator.swift in Sources */,
+				392C13312BF0DA1600DBD790 /* SearchCoordinator.swift in Sources */,
 				392C130A2BEE3D9A00DBD790 /* SceneDelegate.swift in Sources */,
 				392C132A2BEFFD3600DBD790 /* AppCoordinator.swift in Sources */,
+				392C132F2BF0D9D400DBD790 /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
