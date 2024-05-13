@@ -3,8 +3,8 @@ import UIKit
 class AppCoordinator: Coordinator {
     
     override func start() {
-//        showOnboardingFlow()
-        showMainFlow()
+        showOnboardingFlow()
+//        showMainFlow()
     }
     
     override func finish() {
