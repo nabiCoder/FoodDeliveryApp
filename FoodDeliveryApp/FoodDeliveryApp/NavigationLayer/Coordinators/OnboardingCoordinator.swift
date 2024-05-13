@@ -1,6 +1,6 @@
 import UIKit
 
-class OnboardingCoordinator: Coordinator {
+class OnboardingCoordinator: BaseCoordinator {
     
     override func start() {
         showOnboarding()

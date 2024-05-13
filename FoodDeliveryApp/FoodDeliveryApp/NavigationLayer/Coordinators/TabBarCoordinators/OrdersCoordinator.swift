@@ -1,6 +1,6 @@
 import Foundation
 
-class OrdersCoordinator: Coordinator {
+class OrdersCoordinator: BaseCoordinator {
     
     override func start() {
         let vc = ViewController()

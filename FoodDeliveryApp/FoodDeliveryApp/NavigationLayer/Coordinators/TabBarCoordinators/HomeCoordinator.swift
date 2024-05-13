@@ -1,6 +1,6 @@
 import Foundation
 
-class HomeCoordinator: Coordinator {
+class HomeCoordinator: BaseCoordinator {
     
     override func start() {
         let vc = ViewController()

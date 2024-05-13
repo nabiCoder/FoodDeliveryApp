@@ -35,7 +35,7 @@ protocol CoordinatorFinishDelegate: AnyObject {
     func coordinatorDidFinish(childCoordinator: CoordinatorProtocol)
 }
 
-class Coordinator: CoordinatorProtocol {
+class BaseCoordinator: CoordinatorProtocol {
     var childCoordinators: [CoordinatorProtocol]
     var type: CoordinatorType
     var navigationController: UINavigationController?

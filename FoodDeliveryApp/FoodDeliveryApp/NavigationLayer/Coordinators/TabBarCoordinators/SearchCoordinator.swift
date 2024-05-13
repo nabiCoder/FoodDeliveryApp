@@ -1,6 +1,6 @@
 import Foundation
 
-class SearchCoordinator: Coordinator {
+class SearchCoordinator: BaseCoordinator {
     
     override func start() {
         let vc = ViewController()
