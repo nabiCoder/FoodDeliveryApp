@@ -1,4 +1,4 @@
-import UIKit
+import UIKit.UIColor
 
 extension UIColor {
     convenience init(hexString: String) {
