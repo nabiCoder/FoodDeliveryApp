@@ -5,6 +5,8 @@ protocol OnboardingViewOutput: AnyObject {
 }
 
 class OnboardingViewModel {
+    
+    private let userStorage = UserStorage.shared
     // MARK: - Propertys
     weak var onboardingCoordinator: OnboardingCoordinator?
     // MARK: - Init
@@ -15,6 +17,7 @@ class OnboardingViewModel {
 // MARK: - Extensions
 extension OnboardingViewModel: OnboardingViewOutput {
     func onboardingFinish() {
+        userStorage.passedOnboarding = true
         onboardingCoordinator?.finish()
     }
 }

@@ -3,8 +3,8 @@ import UIKit
 // MARK: - OnboardingViewController
 class OnboardingPageViewController: UIViewController {
     // MARK: - Properties
-    weak var onboardingViewOutput: OnboardingViewOutput?
-    let getStartedButton = UIButton()
+    private var onboardingViewOutput: OnboardingViewOutput?
+    private let getStartedButton = UIButton()
     private var pages = [UIViewController]()
     private var currentPageIndex: Int = 0 {
         didSet { pageControl.currentPage = currentPageIndex - 1 }
@@ -50,13 +50,17 @@ class OnboardingPageViewController: UIViewController {
     private func setPageControlHidden(isHidden: Bool) {
             pageControl.isHidden = isHidden
     }
+    
+    private func proceedBasedOnPageIndex() {
+        currentPageIndex == pages.count - 1 ? onboardingViewOutput?.onboardingFinish() : nextViewController()
+    }
 }
 
 // MARK: - Actions
 private extension OnboardingPageViewController {
     @objc func getStartedButtonPressed() {
         setPageControlHidden(isHidden: false)
-        nextViewController()
+        proceedBasedOnPageIndex()
     }
 }
 // MARK: - Layout
