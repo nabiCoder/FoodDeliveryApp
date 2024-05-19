@@ -6,11 +6,12 @@ class AppCoordinator: BaseCoordinator {
     private let faktory = SceneFactory.self
     
     override func start() {
-        if userStorage.passedOnboarding {
-            showMainFlow()
-        } else {
-            showOnboardingFlow()
-        }
+        showOnboardingFlow()
+//        if userStorage.passedOnboarding {
+//            showMainFlow()
+//        } else {
+//            showOnboardingFlow()
+//        }
     }
     
     override func finish() {

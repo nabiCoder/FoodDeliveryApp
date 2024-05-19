@@ -4,7 +4,7 @@ import UIKit
 class OnboardingPageViewController: UIViewController {
     // MARK: - Properties
     private var onboardingViewOutput: OnboardingViewOutput?
-    private let getStartedButton = UIButton()
+    private let getStartedButton = FDButton(title: .getStarted)
     private var pages = [UIViewController]()
     private var currentPageIndex: Int = 0 {
         didSet { pageControl.currentPage = currentPageIndex - 1 }
@@ -94,7 +94,6 @@ private extension OnboardingPageViewController {
         pageControl.pageIndicatorTintColor = .lightGray
         pageControl.isUserInteractionEnabled = false
         
-        
         view.addSubview(pageControl)
         
         NSLayoutConstraint.activate([
@@ -107,14 +106,7 @@ private extension OnboardingPageViewController {
         view.addSubview(getStartedButton)
         
         getStartedButton.translatesAutoresizingMaskIntoConstraints = false
-        getStartedButton.backgroundColor = AppColors.activeOrangeColor
-        getStartedButton.layer.cornerRadius = 8
-        getStartedButton.setTitle("GET STARTED", for: .normal)
-        getStartedButton.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 14)
-        getStartedButton.setTitleColor(AppColors.backgroundWhiteColor, for: .normal)
-        getStartedButton.addTarget(self,
-                                   action: #selector(getStartedButtonPressed),
-                                   for: .touchUpInside)
+        getStartedButton.action = getStartedButtonPressed
         
         NSLayoutConstraint.activate([
             getStartedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
