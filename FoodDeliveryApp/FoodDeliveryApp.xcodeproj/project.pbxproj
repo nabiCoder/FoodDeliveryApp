@@ -30,6 +30,7 @@
 		39CBD71E2BF79FD1000E04FA /* SceneFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD71D2BF79FD1000E04FA /* SceneFactory.swift */; };
 		39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD7232BF7AB54000E04FA /* LoginViewController.swift */; };
 		39CBD7292BF9E137000E04FA /* FDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD7282BF9E137000E04FA /* FDButton.swift */; };
+		39CBD72B2BFA55DF000E04FA /* FDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD72A2BFA55DF000E04FA /* FDTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		39CBD71D2BF79FD1000E04FA /* SceneFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneFactory.swift; sourceTree = "<group>"; };
 		39CBD7232BF7AB54000E04FA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		39CBD7282BF9E137000E04FA /* FDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDButton.swift; sourceTree = "<group>"; };
+		39CBD72A2BFA55DF000E04FA /* FDTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				39CBD7282BF9E137000E04FA /* FDButton.swift */,
+				39CBD72A2BFA55DF000E04FA /* FDTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				39CBD71B2BF67B74000E04FA /* UserStorage.swift in Sources */,
 				39CBD71E2BF79FD1000E04FA /* SceneFactory.swift in Sources */,
 				392C133A2BF0F68500DBD790 /* OnboardingPageViewController.swift in Sources */,
+				39CBD72B2BFA55DF000E04FA /* FDTextField.swift in Sources */,
 				392C132A2BEFFD3600DBD790 /* AppCoordinator.swift in Sources */,
 				392C132F2BF0D9D400DBD790 /* HomeCoordinator.swift in Sources */,
 			);

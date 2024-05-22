@@ -6,7 +6,8 @@ class AppCoordinator: BaseCoordinator {
     private let faktory = SceneFactory.self
     
     override func start() {
-        showOnboardingFlow()
+       let vc = LoginViewController()
+        navigationController?.pushViewController(vc, animated: false)
 //        if userStorage.passedOnboarding {
 //            showMainFlow()
 //        } else {

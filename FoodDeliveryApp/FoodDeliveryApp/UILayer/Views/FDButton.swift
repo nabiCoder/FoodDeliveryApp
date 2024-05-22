@@ -21,8 +21,8 @@ class FDButton: UIView {
         didSet { updateButtonTitle() }
     }
     // MARK: - Init
-    init(title: FDButtonTitle) {
-        self.title = title
+    init(titleType: FDButtonTitle) {
+        self.title = titleType
         super.init(frame: .zero)
         setupLayout()
         updateButtonTitle()

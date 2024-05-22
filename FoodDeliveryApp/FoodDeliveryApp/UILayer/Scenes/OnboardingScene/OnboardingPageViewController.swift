@@ -4,7 +4,7 @@ import UIKit
 class OnboardingPageViewController: UIViewController {
     // MARK: - Properties
     private var onboardingViewOutput: OnboardingViewOutput?
-    private let getStartedButton = FDButton(title: .getStarted)
+    private let getStartedButton = FDButton(titleType: .getStarted)
     private var pages = [UIViewController]()
     private var currentPageIndex: Int = 0 {
         didSet { pageControl.currentPage = currentPageIndex - 1 }
