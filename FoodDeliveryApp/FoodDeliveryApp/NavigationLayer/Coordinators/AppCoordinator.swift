@@ -7,7 +7,9 @@ class AppCoordinator: BaseCoordinator {
     
     override func start() {
        let vc = LoginViewController()
+        
         navigationController?.pushViewController(vc, animated: false)
+        
 //        if userStorage.passedOnboarding {
 //            showMainFlow()
 //        } else {

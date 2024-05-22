@@ -24,6 +24,7 @@
 		392C13372BF0DB2700DBD790 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13362BF0DB2700DBD790 /* TabBarController.swift */; };
 		392C133A2BF0F68500DBD790 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */; };
 		392C133C2BF0F6A700DBD790 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */; };
+		393224992BFE4BF60092DB5B /* FDSocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */; };
 		39A96AF12BF37990009FDC96 /* ReusableOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */; };
 		39CBD7182BF62D49000E04FA /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD7172BF62D49000E04FA /* UILabel+Ext.swift */; };
 		39CBD71B2BF67B74000E04FA /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD71A2BF67B74000E04FA /* UserStorage.swift */; };
@@ -53,6 +54,7 @@
 		392C13362BF0DB2700DBD790 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
+		393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSocialLoginButton.swift; sourceTree = "<group>"; };
 		39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableOnboardingViewController.swift; sourceTree = "<group>"; };
 		39CBD7172BF62D49000E04FA /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		39CBD71A2BF67B74000E04FA /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -260,6 +262,7 @@
 			children = (
 				39CBD7282BF9E137000E04FA /* FDButton.swift */,
 				39CBD72A2BFA55DF000E04FA /* FDTextField.swift */,
+				393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				392C13082BEE3D9A00DBD790 /* AppDelegate.swift in Sources */,
 				392C13352BF0DA6700DBD790 /* ProfileCoordinator.swift in Sources */,
 				39A96AF12BF37990009FDC96 /* ReusableOnboardingViewController.swift in Sources */,
+				393224992BFE4BF60092DB5B /* FDSocialLoginButton.swift in Sources */,
 				392C13332BF0DA4500DBD790 /* OrdersCoordinator.swift in Sources */,
 				39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */,
 				392C13222BEF8D3100DBD790 /* AppColors.swift in Sources */,

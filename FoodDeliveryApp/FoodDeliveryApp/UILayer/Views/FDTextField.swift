@@ -94,6 +94,7 @@ private extension FDTextField {
         switch fieldType {
         case .email:
             setupCheckmark()
+            textField.isSecureTextEntry = false
         case .password:
             setupPasswordButton()
         }
@@ -172,7 +173,7 @@ private extension FDTextField {
         addSubview(textFieldShadow)
         
         textFieldShadow.translatesAutoresizingMaskIntoConstraints = false
-        textFieldShadow.backgroundColor = AppColors.badyTextGreyColor.withAlphaComponent(100)
+        textFieldShadow.backgroundColor = AppColors.shadowColor.withAlphaComponent(100)
         
         NSLayoutConstraint.activate([
             textFieldShadow.topAnchor.constraint(equalTo: textField.bottomAnchor, constant: 9),

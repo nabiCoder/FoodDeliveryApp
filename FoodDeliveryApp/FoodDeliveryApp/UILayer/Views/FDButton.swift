@@ -15,11 +15,11 @@ enum FDButtonTitle: String {
 
 class FDButton: UIView {
     // MARK: - Properties
-    var action: (() -> Void)?
     private let button = UIButton()
     private var title: FDButtonTitle {
         didSet { updateButtonTitle() }
     }
+    var action: (() -> Void)?
     // MARK: - Init
     init(titleType: FDButtonTitle) {
         self.title = titleType
