@@ -6,7 +6,7 @@ class AppCoordinator: BaseCoordinator {
     private let faktory = SceneFactory.self
     
     override func start() {
-       let vc = ForgotPasswordViewController()
+       let vc = PasswordResetSuccessViewController(email: "nabiullin.den3@gmail.com")
         
         navigationController?.pushViewController(vc, animated: false)
         
