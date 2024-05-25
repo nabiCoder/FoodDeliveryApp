@@ -1,6 +1,7 @@
 import UIKit
 
 enum FieldType {
+    case name
     case email
     case password
 }
@@ -92,6 +93,9 @@ private extension FDTextField {
     
     func setupAdditionalComponents() {
         switch fieldType {
+        case .name:
+            setupCheckmark()
+            textField.isSecureTextEntry = false
         case .email:
             setupCheckmark()
             textField.isSecureTextEntry = false

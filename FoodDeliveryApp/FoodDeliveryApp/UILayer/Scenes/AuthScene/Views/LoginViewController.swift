@@ -29,6 +29,9 @@ class LoginViewController: UIViewController {
     @objc private func forgotPasswordButtonPressed() {
         print("forgotPasswordButtonPressed")
     }
+    @objc private func signInButtonPressed() {
+        print("siegnInButtonPressed")
+    }
     @objc private func newAccountButtonPressed() {
         print("newAccountButtonPressed")
     }
@@ -153,6 +156,7 @@ private extension LoginViewController {
         view.addSubview(signInButton)
         
         signInButton.translatesAutoresizingMaskIntoConstraints = false
+        signInButton.action = signInButtonPressed
         
         NSLayoutConstraint.activate([
             signInButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 24),
@@ -215,7 +219,7 @@ private extension LoginViewController {
             orLabel.topAnchor.constraint(equalTo: createAccountStackView.bottomAnchor, constant: 20),
             orLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 168),
             orLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -168),
-            orLabel.heightAnchor.constraint(equalToConstant: 12)
+            orLabel.heightAnchor.constraint(equalToConstant: 13)
         ])
     }
     
