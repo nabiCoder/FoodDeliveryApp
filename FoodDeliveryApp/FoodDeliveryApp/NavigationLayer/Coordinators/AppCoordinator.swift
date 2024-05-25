@@ -6,7 +6,7 @@ class AppCoordinator: BaseCoordinator {
     private let faktory = SceneFactory.self
     
     override func start() {
-       let vc = CreateAccountViewController()
+       let vc = ForgotPasswordViewController()
         
         navigationController?.pushViewController(vc, animated: false)
         

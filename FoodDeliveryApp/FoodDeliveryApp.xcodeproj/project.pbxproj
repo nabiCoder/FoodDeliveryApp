@@ -26,6 +26,7 @@
 		392C133C2BF0F6A700DBD790 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */; };
 		393224992BFE4BF60092DB5B /* FDSocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */; };
 		3997635F2C01E37A007523E4 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */; };
+		399763612C0252B4007523E4 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763602C0252B4007523E4 /* ForgotPasswordViewController.swift */; };
 		39A96AF12BF37990009FDC96 /* ReusableOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */; };
 		39CBD7182BF62D49000E04FA /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD7172BF62D49000E04FA /* UILabel+Ext.swift */; };
 		39CBD71B2BF67B74000E04FA /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD71A2BF67B74000E04FA /* UserStorage.swift */; };
@@ -57,6 +58,7 @@
 		392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSocialLoginButton.swift; sourceTree = "<group>"; };
 		3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		399763602C0252B4007523E4 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableOnboardingViewController.swift; sourceTree = "<group>"; };
 		39CBD7172BF62D49000E04FA /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		39CBD71A2BF67B74000E04FA /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				39CBD7232BF7AB54000E04FA /* LoginViewController.swift */,
 				3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */,
+				399763602C0252B4007523E4 /* ForgotPasswordViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				393224992BFE4BF60092DB5B /* FDSocialLoginButton.swift in Sources */,
 				392C13332BF0DA4500DBD790 /* OrdersCoordinator.swift in Sources */,
 				39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */,
+				399763612C0252B4007523E4 /* ForgotPasswordViewController.swift in Sources */,
 				392C13222BEF8D3100DBD790 /* AppColors.swift in Sources */,
 				3997635F2C01E37A007523E4 /* CreateAccountViewController.swift in Sources */,
 				392C132C2BEFFEFD00DBD790 /* OnboardingCoordinator.swift in Sources */,

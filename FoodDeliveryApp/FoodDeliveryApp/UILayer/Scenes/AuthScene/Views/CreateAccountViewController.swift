@@ -2,7 +2,7 @@ import UIKit
 
 class CreateAccountViewController: UIViewController {
     // MARK: - Views
-    private let navigationLoginTitle = "Sign In"
+    private let navigationSignUpTitle = "Sign Up"
     private let mainSignUpLabel = UILabel()
     private let subSignUpLabel = UILabel()
     private let backLoginButton = UIButton()
@@ -62,7 +62,7 @@ private extension CreateAccountViewController {
     }
     
     func setupNavigationController() {
-        navigationController?.title = navigationLoginTitle
+        navigationController?.title = navigationSignUpTitle
     }
     
     func setupMainLoginLabel() {
