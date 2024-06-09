@@ -5,7 +5,7 @@ enum FDSocialLoginButtonType: String {
     case google
 }
 
-class FDSocialLoginButton: UIView {
+class FDSocialButton: UIView {
     // MARK: - Properties
     private let button = UIButton()
     private let imageView = UIImageView()
@@ -27,7 +27,7 @@ class FDSocialLoginButton: UIView {
     }
 }
     // MARK: - Extensions, private methods
-private extension FDSocialLoginButton {
+private extension FDSocialButton {
     func setupLayout() {
         setupButton()
         setupImageView()

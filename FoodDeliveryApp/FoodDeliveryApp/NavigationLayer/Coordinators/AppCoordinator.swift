@@ -3,10 +3,10 @@ import UIKit
 class AppCoordinator: BaseCoordinator {
     
     private let userStorage = UserStorage.shared
-    private let faktory = SceneFactory.self
+    private let factory = SceneFactory.self
     
     override func start() {
-       let vc = PasswordResetSuccessViewController(email: "nabiullin.den3@gmail.com")
+       let vc = EnterNumberViewController()
         
         navigationController?.pushViewController(vc, animated: false)
         
@@ -25,14 +25,14 @@ class AppCoordinator: BaseCoordinator {
 private extension AppCoordinator {
     func showOnboardingFlow() {
         guard let navigationController = navigationController else { return }
-        faktory.makeOnboardingFlow(appCoordinator: self,
+        factory.makeOnboardingFlow(appCoordinator: self,
                                    finishDelegate: self,
                                    navigationController: navigationController)
     }
     
     func showMainFlow() {
         guard let navigationController = navigationController else { return }
-        let tabBarController = faktory.makeMainFlow(appCoordinator: self,
+        let tabBarController = factory.makeMainFlow(appCoordinator: self,
                                                     finishDelegate: self,
                                                     navigationController: navigationController)
         navigationController.pushViewController(tabBarController, animated: true)

@@ -24,10 +24,17 @@
 		392C13372BF0DB2700DBD790 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13362BF0DB2700DBD790 /* TabBarController.swift */; };
 		392C133A2BF0F68500DBD790 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */; };
 		392C133C2BF0F6A700DBD790 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */; };
-		393224992BFE4BF60092DB5B /* FDSocialLoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */; };
+		393224992BFE4BF60092DB5B /* FDSocialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393224982BFE4BF60092DB5B /* FDSocialButton.swift */; };
+		394BB1E12C107F6C007D2B75 /* FDPhoneNumberTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394BB1E02C107F6C007D2B75 /* FDPhoneNumberTextField.swift */; };
+		394BB1E42C147A1F007D2B75 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394BB1E32C147A1F007D2B75 /* String+Extension.swift */; };
+		394BB1E62C147B14007D2B75 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 394BB1E52C147B14007D2B75 /* UIView+Extension.swift */; };
 		3997635F2C01E37A007523E4 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */; };
 		399763612C0252B4007523E4 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763602C0252B4007523E4 /* PasswordResetViewController.swift */; };
 		399763632C027925007523E4 /* PasswordResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */; };
+		399763652C028135007523E4 /* EnterNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763642C028135007523E4 /* EnterNumberViewController.swift */; };
+		399763672C03A3B4007523E4 /* PopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763662C03A3B4007523E4 /* PopUpView.swift */; };
+		399763692C03A4C6007523E4 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763682C03A4C6007523E4 /* CountryCodes.swift */; };
+		399763722C03A8AE007523E4 /* PopUpCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763712C03A8AE007523E4 /* PopUpCell.swift */; };
 		39A96AF12BF37990009FDC96 /* ReusableOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */; };
 		39CBD7182BF62D49000E04FA /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD7172BF62D49000E04FA /* UILabel+Ext.swift */; };
 		39CBD71B2BF67B74000E04FA /* UserStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD71A2BF67B74000E04FA /* UserStorage.swift */; };
@@ -57,10 +64,17 @@
 		392C13362BF0DB2700DBD790 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
-		393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSocialLoginButton.swift; sourceTree = "<group>"; };
+		393224982BFE4BF60092DB5B /* FDSocialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSocialButton.swift; sourceTree = "<group>"; };
+		394BB1E02C107F6C007D2B75 /* FDPhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDPhoneNumberTextField.swift; sourceTree = "<group>"; };
+		394BB1E32C147A1F007D2B75 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		394BB1E52C147B14007D2B75 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		399763602C0252B4007523E4 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetSuccessViewController.swift; sourceTree = "<group>"; };
+		399763642C028135007523E4 /* EnterNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumberViewController.swift; sourceTree = "<group>"; };
+		399763662C03A3B4007523E4 /* PopUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpView.swift; sourceTree = "<group>"; };
+		399763682C03A4C6007523E4 /* CountryCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
+		399763712C03A8AE007523E4 /* PopUpCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpCell.swift; sourceTree = "<group>"; };
 		39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableOnboardingViewController.swift; sourceTree = "<group>"; };
 		39CBD7172BF62D49000E04FA /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
 		39CBD71A2BF67B74000E04FA /* UserStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStorage.swift; sourceTree = "<group>"; };
@@ -207,6 +221,73 @@
 			path = OnboardingScene;
 			sourceTree = "<group>";
 		};
+		394BB1E22C1479F2007D2B75 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				394BB1E32C147A1F007D2B75 /* String+Extension.swift */,
+				394BB1E52C147B14007D2B75 /* UIView+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		3997636A2C03A78B007523E4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				39CBD7232BF7AB54000E04FA /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3997636B2C03A79C007523E4 /* CreateAccount */ = {
+			isa = PBXGroup;
+			children = (
+				3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */,
+			);
+			path = CreateAccount;
+			sourceTree = "<group>";
+		};
+		3997636C2C03A7B1007523E4 /* PasswordReset */ = {
+			isa = PBXGroup;
+			children = (
+				399763602C0252B4007523E4 /* PasswordResetViewController.swift */,
+			);
+			path = PasswordReset;
+			sourceTree = "<group>";
+		};
+		3997636D2C03A7C6007523E4 /* PasswordResetSuccess */ = {
+			isa = PBXGroup;
+			children = (
+				399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */,
+			);
+			path = PasswordResetSuccess;
+			sourceTree = "<group>";
+		};
+		3997636E2C03A7F3007523E4 /* EnterNumber */ = {
+			isa = PBXGroup;
+			children = (
+				399763702C03A81A007523E4 /* PopUpTable */,
+				3997636F2C03A808007523E4 /* Cell */,
+				399763642C028135007523E4 /* EnterNumberViewController.swift */,
+			);
+			path = EnterNumber;
+			sourceTree = "<group>";
+		};
+		3997636F2C03A808007523E4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				399763712C03A8AE007523E4 /* PopUpCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		399763702C03A81A007523E4 /* PopUpTable */ = {
+			isa = PBXGroup;
+			children = (
+				399763662C03A3B4007523E4 /* PopUpView.swift */,
+			);
+			path = PopUpTable;
+			sourceTree = "<group>";
+		};
 		39CBD7192BF67B3B000E04FA /* ServicesLayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,10 +317,11 @@
 		39CBD7202BF7AB0D000E04FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				39CBD7232BF7AB54000E04FA /* LoginViewController.swift */,
-				3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */,
-				399763602C0252B4007523E4 /* PasswordResetViewController.swift */,
-				399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */,
+				3997636E2C03A7F3007523E4 /* EnterNumber */,
+				3997636D2C03A7C6007523E4 /* PasswordResetSuccess */,
+				3997636C2C03A7B1007523E4 /* PasswordReset */,
+				3997636B2C03A79C007523E4 /* CreateAccount */,
+				3997636A2C03A78B007523E4 /* Login */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,6 +336,7 @@
 		39CBD7222BF7AB13000E04FA /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				399763682C03A4C6007523E4 /* CountryCodes.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,9 +352,11 @@
 		39CBD7262BF7B419000E04FA /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				394BB1E22C1479F2007D2B75 /* Extensions */,
 				39CBD7282BF9E137000E04FA /* FDButton.swift */,
 				39CBD72A2BFA55DF000E04FA /* FDTextField.swift */,
-				393224982BFE4BF60092DB5B /* FDSocialLoginButton.swift */,
+				393224982BFE4BF60092DB5B /* FDSocialButton.swift */,
+				394BB1E02C107F6C007D2B75 /* FDPhoneNumberTextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -355,19 +440,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				394BB1E62C147B14007D2B75 /* UIView+Extension.swift in Sources */,
 				392C130C2BEE3D9A00DBD790 /* ViewController.swift in Sources */,
 				39CBD7292BF9E137000E04FA /* FDButton.swift in Sources */,
+				399763652C028135007523E4 /* EnterNumberViewController.swift in Sources */,
 				392C13372BF0DB2700DBD790 /* TabBarController.swift in Sources */,
 				392C13202BEF8CC900DBD790 /* UIColor+Ext.swift in Sources */,
 				392C13282BEFD31200DBD790 /* BaseCoordinator.swift in Sources */,
 				392C13082BEE3D9A00DBD790 /* AppDelegate.swift in Sources */,
 				392C13352BF0DA6700DBD790 /* ProfileCoordinator.swift in Sources */,
+				394BB1E12C107F6C007D2B75 /* FDPhoneNumberTextField.swift in Sources */,
 				399763632C027925007523E4 /* PasswordResetSuccessViewController.swift in Sources */,
+				399763672C03A3B4007523E4 /* PopUpView.swift in Sources */,
 				39A96AF12BF37990009FDC96 /* ReusableOnboardingViewController.swift in Sources */,
-				393224992BFE4BF60092DB5B /* FDSocialLoginButton.swift in Sources */,
+				393224992BFE4BF60092DB5B /* FDSocialButton.swift in Sources */,
 				392C13332BF0DA4500DBD790 /* OrdersCoordinator.swift in Sources */,
 				39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */,
 				399763612C0252B4007523E4 /* PasswordResetViewController.swift in Sources */,
+				394BB1E42C147A1F007D2B75 /* String+Extension.swift in Sources */,
 				392C13222BEF8D3100DBD790 /* AppColors.swift in Sources */,
 				3997635F2C01E37A007523E4 /* CreateAccountViewController.swift in Sources */,
 				392C132C2BEFFEFD00DBD790 /* OnboardingCoordinator.swift in Sources */,
@@ -376,10 +466,12 @@
 				392C130A2BEE3D9A00DBD790 /* SceneDelegate.swift in Sources */,
 				39CBD7182BF62D49000E04FA /* UILabel+Ext.swift in Sources */,
 				39CBD71B2BF67B74000E04FA /* UserStorage.swift in Sources */,
+				399763692C03A4C6007523E4 /* CountryCodes.swift in Sources */,
 				39CBD71E2BF79FD1000E04FA /* SceneFactory.swift in Sources */,
 				392C133A2BF0F68500DBD790 /* OnboardingPageViewController.swift in Sources */,
 				39CBD72B2BFA55DF000E04FA /* FDTextField.swift in Sources */,
 				392C132A2BEFFD3600DBD790 /* AppCoordinator.swift in Sources */,
+				399763722C03A8AE007523E4 /* PopUpCell.swift in Sources */,
 				392C132F2BF0D9D400DBD790 /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

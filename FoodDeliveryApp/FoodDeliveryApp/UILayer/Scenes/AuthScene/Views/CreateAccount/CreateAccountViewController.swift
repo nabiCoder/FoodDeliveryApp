@@ -13,8 +13,8 @@ class CreateAccountViewController: UIViewController {
     private let signUpButton = FDButton(titleType: .signUp)
     private let textLabel = UILabel()
     private let orLabel = UILabel()
-    private let facebookButton = FDSocialLoginButton(type: .facebook)
-    private let googleButton = FDSocialLoginButton(type: .google)
+    private let facebookButton = FDSocialButton(type: .facebook)
+    private let googleButton = FDSocialButton(type: .google)
     private let socialButtonsStackView = UIStackView()
     // MARK: - Lifecycle
     override func viewDidLoad() {

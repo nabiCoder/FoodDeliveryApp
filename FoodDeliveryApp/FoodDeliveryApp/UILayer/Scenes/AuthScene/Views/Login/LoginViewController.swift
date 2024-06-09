@@ -13,8 +13,8 @@ class LoginViewController: UIViewController {
     private let newAccountButton = UIButton()
     private let createAccountStackView = UIStackView()
     private let orLabel = UILabel()
-    private let facebookButton = FDSocialLoginButton(type: .facebook)
-    private let googleButton = FDSocialLoginButton(type: .google)
+    private let facebookButton = FDSocialButton(type: .facebook)
+    private let googleButton = FDSocialButton(type: .google)
     private let socialButtonsStackView = UIStackView()
     
     // MARK: - Lifecycle
