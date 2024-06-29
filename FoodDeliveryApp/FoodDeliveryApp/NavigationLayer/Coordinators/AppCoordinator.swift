@@ -1,4 +1,4 @@
-import UIKit
+import Foundation
 
 class AppCoordinator: BaseCoordinator {
     
@@ -6,15 +6,11 @@ class AppCoordinator: BaseCoordinator {
     private let factory = SceneFactory.self
     
     override func start() {
-       let vc = VerifyNumberViewController()
-        
-        navigationController?.pushViewController(vc, animated: false)
-        
-//        if userStorage.passedOnboarding {
-//            showMainFlow()
-//        } else {
-//            showOnboardingFlow()
-//        }
+        if userStorage.passedOnboarding {
+            showAuthFlow()
+        } else {
+            showOnboardingFlow()
+        }
     }
     
     override func finish() {
@@ -28,6 +24,13 @@ private extension AppCoordinator {
         factory.makeOnboardingFlow(appCoordinator: self,
                                    finishDelegate: self,
                                    navigationController: navigationController)
+    }
+    
+    func showAuthFlow() {
+        guard let navigationController = navigationController else { return }
+        factory.makeAuthFlow(appCoordinator: self,
+                             finishDelegate: self,
+                             navigationController: navigationController)
     }
     
     func showMainFlow() {
@@ -45,6 +48,9 @@ extension AppCoordinator: CoordinatorFinishDelegate {
         
         switch childCoordinator.type {
         case .onboarding:
+            navigationController?.viewControllers.removeAll()
+            showAuthFlow()
+        case .authorization:
             navigationController?.viewControllers.removeAll()
             showMainFlow()
         case .app:

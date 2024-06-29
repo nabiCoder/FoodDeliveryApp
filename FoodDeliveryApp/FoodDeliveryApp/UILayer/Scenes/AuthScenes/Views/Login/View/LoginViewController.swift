@@ -16,7 +16,17 @@ class LoginViewController: UIViewController {
     private let facebookButton = FDSocialButton(type: .facebook)
     private let googleButton = FDSocialButton(type: .google)
     private let socialButtonsStackView = UIStackView()
+    // MARK: - Properties
+    private var loginViewOutput: LoginViewOutput?
+    // MARK: - Init
+    init(loginViewOutput: LoginViewOutput) {
+        super.init(nibName: nil, bundle: nil)
+        self.loginViewOutput = loginViewOutput
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

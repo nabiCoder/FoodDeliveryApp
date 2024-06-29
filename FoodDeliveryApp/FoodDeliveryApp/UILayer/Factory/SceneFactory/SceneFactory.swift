@@ -36,6 +36,33 @@ struct SceneFactory {
         
         return onboardingViewController
     }
+    // MARK: - Login
+    static func makeLoginScene(coordinator: AuthCoordinator) -> LoginViewController {
+        let loginViewModel = LoginViewModel(authCoordinator: coordinator)
+        let loginViewController = LoginViewController(loginViewOutput: loginViewModel)
+        
+        return loginViewController
+    }
+    // MARK: - Create Account
+    static func makeCreateAccountScene(coordinator: AuthCoordinator) {
+        
+    }
+    // MARK: - Password Reset
+    static func makePasswordResetScene(coordinator: AuthCoordinator) {
+        
+    }
+    // MARK: - Password Reset Success
+    static func makePasswordResetSuccessScene(coordinator: AuthCoordinator) {
+        
+    }
+    // MARK: - Enter Number
+    static func makeEnterNumberScene(coordinator: AuthCoordinator) {
+        
+    }
+    // MARK: - Verify Number
+    static func makeVerifyNumberScene(coordinator: AuthCoordinator) {
+        
+    }
     // MARK: - Main Flow
     static func makeMainFlow(appCoordinator: AppCoordinator,
                              finishDelegate: CoordinatorFinishDelegate,
@@ -97,5 +124,14 @@ struct SceneFactory {
                                                           finishDelegate: finishDelegate)
         appCoordinator.addChildCoordinator(onboardingCoordinator)
         onboardingCoordinator.start()
+    }
+    static func makeAuthFlow(appCoordinator: AppCoordinator,
+                             finishDelegate: CoordinatorFinishDelegate,
+                             navigationController: UINavigationController) {
+        let authCoordinator = AuthCoordinator(type: .authorization,
+                                              navigationController: navigationController,
+                                              finishDelegate: finishDelegate)
+        appCoordinator.addChildCoordinator(authCoordinator)
+        authCoordinator.start()
     }
 }

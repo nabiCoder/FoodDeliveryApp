@@ -45,6 +45,8 @@
 		39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD7232BF7AB54000E04FA /* LoginViewController.swift */; };
 		39CBD7292BF9E137000E04FA /* FDButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD7282BF9E137000E04FA /* FDButton.swift */; };
 		39CBD72B2BFA55DF000E04FA /* FDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD72A2BFA55DF000E04FA /* FDTextField.swift */; };
+		39CD76672C3085360088C013 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD76662C3085360088C013 /* AuthCoordinator.swift */; };
+		39CD76692C308DB70088C013 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD76682C308DB70088C013 /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +90,8 @@
 		39CBD7232BF7AB54000E04FA /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		39CBD7282BF9E137000E04FA /* FDButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDButton.swift; sourceTree = "<group>"; };
 		39CBD72A2BFA55DF000E04FA /* FDTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDTextField.swift; sourceTree = "<group>"; };
+		39CD76662C3085360088C013 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		39CD76682C308DB70088C013 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +206,7 @@
 				392C13272BEFD31200DBD790 /* BaseCoordinator.swift */,
 				392C13292BEFFD3600DBD790 /* AppCoordinator.swift */,
 				392C132B2BEFFEFD00DBD790 /* OnboardingCoordinator.swift */,
+				39CD76662C3085360088C013 /* AuthCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -220,9 +225,8 @@
 		392C13382BF0F65C00DBD790 /* OnboardingScene */ = {
 			isa = PBXGroup;
 			children = (
-				392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */,
-				39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */,
-				392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */,
+				39CD766C2C308E320088C013 /* Views */,
+				39CD766D2C308E4B0088C013 /* ViewModel */,
 			);
 			path = OnboardingScene;
 			sourceTree = "<group>";
@@ -230,7 +234,8 @@
 		3943B7352C1F06580078F349 /* VerifyNumber */ = {
 			isa = PBXGroup;
 			children = (
-				3943B7362C1F06A70078F349 /* VerifyNumberViewController.swift */,
+				39CD76772C3094B50088C013 /* ViewModel */,
+				39CD76762C3094AD0088C013 /* View */,
 			);
 			path = VerifyNumber;
 			sourceTree = "<group>";
@@ -247,7 +252,8 @@
 		3997636A2C03A78B007523E4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				39CBD7232BF7AB54000E04FA /* LoginViewController.swift */,
+				39CD766B2C308DD50088C013 /* ViewModel */,
+				39CD766A2C308DC80088C013 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -255,7 +261,8 @@
 		3997636B2C03A79C007523E4 /* CreateAccount */ = {
 			isa = PBXGroup;
 			children = (
-				3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */,
+				39CD766F2C3094470088C013 /* ViewModel */,
+				39CD766E2C30943F0088C013 /* View */,
 			);
 			path = CreateAccount;
 			sourceTree = "<group>";
@@ -263,7 +270,8 @@
 		3997636C2C03A7B1007523E4 /* PasswordReset */ = {
 			isa = PBXGroup;
 			children = (
-				399763602C0252B4007523E4 /* PasswordResetViewController.swift */,
+				39CD76712C3094620088C013 /* ViewModel */,
+				39CD76702C3094570088C013 /* View */,
 			);
 			path = PasswordReset;
 			sourceTree = "<group>";
@@ -271,7 +279,8 @@
 		3997636D2C03A7C6007523E4 /* PasswordResetSuccess */ = {
 			isa = PBXGroup;
 			children = (
-				399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */,
+				39CD76732C3094790088C013 /* ViewModel */,
+				39CD76722C3094710088C013 /* View */,
 			);
 			path = PasswordResetSuccess;
 			sourceTree = "<group>";
@@ -279,9 +288,8 @@
 		3997636E2C03A7F3007523E4 /* EnterNumber */ = {
 			isa = PBXGroup;
 			children = (
-				399763702C03A81A007523E4 /* PopUpTable */,
-				3997636F2C03A808007523E4 /* Cell */,
-				399763642C028135007523E4 /* EnterNumberViewController.swift */,
+				39CD76752C3094A10088C013 /* ViewModel */,
+				39CD76742C3094890088C013 /* Views */,
 			);
 			path = EnterNumber;
 			sourceTree = "<group>";
@@ -318,14 +326,14 @@
 			path = SceneFactory;
 			sourceTree = "<group>";
 		};
-		39CBD71F2BF7AADC000E04FA /* AuthScene */ = {
+		39CBD71F2BF7AADC000E04FA /* AuthScenes */ = {
 			isa = PBXGroup;
 			children = (
 				39CBD7222BF7AB13000E04FA /* Models */,
 				39CBD7212BF7AB10000E04FA /* ViewModels */,
 				39CBD7202BF7AB0D000E04FA /* Views */,
 			);
-			path = AuthScene;
+			path = AuthScenes;
 			sourceTree = "<group>";
 		};
 		39CBD7202BF7AB0D000E04FA /* Views */ = {
@@ -381,10 +389,120 @@
 		39CBD7272BF7B433000E04FA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				39CBD71F2BF7AADC000E04FA /* AuthScene */,
+				39CBD71F2BF7AADC000E04FA /* AuthScenes */,
 				392C13382BF0F65C00DBD790 /* OnboardingScene */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		39CD766A2C308DC80088C013 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				39CBD7232BF7AB54000E04FA /* LoginViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39CD766B2C308DD50088C013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				39CD76682C308DB70088C013 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39CD766C2C308E320088C013 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */,
+				39A96AF02BF37990009FDC96 /* ReusableOnboardingViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		39CD766D2C308E4B0088C013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */,
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		39CD766E2C30943F0088C013 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39CD766F2C3094470088C013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39CD76702C3094570088C013 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				399763602C0252B4007523E4 /* PasswordResetViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39CD76712C3094620088C013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39CD76722C3094710088C013 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39CD76732C3094790088C013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39CD76742C3094890088C013 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				399763702C03A81A007523E4 /* PopUpTable */,
+				3997636F2C03A808007523E4 /* Cell */,
+				399763642C028135007523E4 /* EnterNumberViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		39CD76752C3094A10088C013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39CD76762C3094AD0088C013 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				3943B7362C1F06A70078F349 /* VerifyNumberViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		39CD76772C3094B50088C013 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -475,6 +593,7 @@
 				39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */,
 				399763612C0252B4007523E4 /* PasswordResetViewController.swift in Sources */,
 				394BB1E42C147A1F007D2B75 /* String+Extension.swift in Sources */,
+				39CD76672C3085360088C013 /* AuthCoordinator.swift in Sources */,
 				392C13222BEF8D3100DBD790 /* AppColors.swift in Sources */,
 				3997635F2C01E37A007523E4 /* CreateAccountViewController.swift in Sources */,
 				3943B7392C1F42CC0078F349 /* FDCodeVerifyTextField.swift in Sources */,
@@ -492,6 +611,7 @@
 				39CBD72B2BFA55DF000E04FA /* FDTextField.swift in Sources */,
 				392C132A2BEFFD3600DBD790 /* AppCoordinator.swift in Sources */,
 				399763722C03A8AE007523E4 /* PopUpCell.swift in Sources */,
+				39CD76692C308DB70088C013 /* LoginViewModel.swift in Sources */,
 				392C132F2BF0D9D400DBD790 /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
