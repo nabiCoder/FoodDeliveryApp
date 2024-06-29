@@ -75,7 +75,7 @@ private extension ReusableOnboardingViewController {
     }
     
     func setupView() {
-        view.backgroundColor = AppColors.backgroundWhiteColor
+        view.backgroundColor = AppColors.inputWhiteColor
     }
     
     func setupCircleImageView() {

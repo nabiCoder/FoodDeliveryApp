@@ -39,7 +39,7 @@ private extension EnterNumberViewController {
     }
     
     func setupView() {
-        view.backgroundColor = AppColors.backgroundWhiteColor
+        view.backgroundColor = AppColors.inputWhiteColor
     }
     
     func setupNavigationController() {

@@ -6,7 +6,7 @@ class AppCoordinator: BaseCoordinator {
     private let factory = SceneFactory.self
     
     override func start() {
-       let vc = EnterNumberViewController()
+       let vc = VerifyNumberViewController()
         
         navigationController?.pushViewController(vc, animated: false)
         
