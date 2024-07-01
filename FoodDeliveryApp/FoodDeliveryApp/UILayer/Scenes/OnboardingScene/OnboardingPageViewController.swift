@@ -52,6 +52,8 @@ class OnboardingPageViewController: UIViewController {
     }
     
     private func proceedBasedOnPageIndex() {
+        print("current page = \(currentPageIndex)")
+        print("page count = \(pages.count)")
         currentPageIndex == pages.count - 1 ? onboardingViewOutput?.onboardingFinish() : nextViewController()
     }
 }
@@ -106,7 +108,9 @@ private extension OnboardingPageViewController {
         view.addSubview(getStartedButton)
         
         getStartedButton.translatesAutoresizingMaskIntoConstraints = false
-        getStartedButton.action = getStartedButtonPressed
+        getStartedButton.action = { [weak self] in
+                self?.getStartedButtonPressed()
+        }
         
         NSLayoutConstraint.activate([
             getStartedButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
@@ -122,6 +126,7 @@ extension OnboardingPageViewController: UIPageViewControllerDataSource {
     func pageViewController(_ pageViewController: UIPageViewController,
                             viewControllerBefore viewController: UIViewController) -> UIViewController? {
         guard let currentIndex = pages.firstIndex(of: viewController), currentIndex > 0 else { return nil }
+        if currentIndex == 1 { currentPageIndex = 0 }
         return pages[currentIndex - 1]
     }
     

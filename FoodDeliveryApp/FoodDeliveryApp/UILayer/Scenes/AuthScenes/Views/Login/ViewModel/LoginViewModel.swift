@@ -14,4 +14,5 @@ class LoginViewModel {
 }
 // MARK: - Extensions
 extension LoginViewModel: LoginViewOutput {
+    
 }
