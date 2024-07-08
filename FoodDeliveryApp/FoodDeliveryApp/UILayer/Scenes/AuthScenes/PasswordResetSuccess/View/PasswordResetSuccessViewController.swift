@@ -7,12 +7,14 @@ class PasswordResetSuccessViewController: UIViewController {
     private let subLabel = UILabel()
     private let sendAgainButton = FDButton(titleType: .sendAgain)
     private let logoImage = UIImageView()
-    
+    // MARK: - Properties
+    private var passwordResetSuccessViewOutput: PasswordResetSuccessViewOutput?
     private var email: String
     // MARK: - Init
-    init(email: String) {
+    init(email: String, PRSViewOutput: PasswordResetSuccessViewOutput) {
         self.email = email
         super.init(nibName: nil, bundle: nil)
+        self.passwordResetSuccessViewOutput = PRSViewOutput
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

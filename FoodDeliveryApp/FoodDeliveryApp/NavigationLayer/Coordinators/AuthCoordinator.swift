@@ -5,16 +5,45 @@ class AuthCoordinator: BaseCoordinator {
     private let faktory = SceneFactory.self
     
     override func start() {
-        showLogin()
+//        showLogin()
+//        showCreateAccount()
+        showEnterNumber()
     }
     
     override func finish() {
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
+    
+    
 }
 private extension AuthCoordinator {
     func showLogin() {
-        let loginViewController = faktory.makeLoginScene(coordinator: self)
+        let loginVC = faktory.makeLoginScene(coordinator: self)
+        navigationController?.pushViewController(loginVC, animated: true)
+    }
+    
+    func showCreateAccount() {
+        let createAccountVC = faktory.makeCreateAccountScene(coordinator: self)
+        navigationController?.pushViewController(createAccountVC, animated: true)
+    }
+    
+    func showPasswordReset() {
+        let loginViewController = faktory.makePasswordResetScene(coordinator: self)
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    func showPasswordResetSuccess(email: String) {
+        let loginViewController = faktory.makePasswordResetSuccessScene(coordinator: self, email: email)
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    func showEnterNumber() {
+        let loginViewController = faktory.makeEnterNumberScene(coordinator: self)
+        navigationController?.pushViewController(loginViewController, animated: true)
+    }
+    
+    func showVerifyNumber() {
+        let loginViewController = faktory.makeVerifyNumberScene(coordinator: self)
         navigationController?.pushViewController(loginViewController, animated: true)
     }
 }

@@ -1,22 +1,36 @@
 import UIKit
 
-class EnterNumberViewController: UIViewController {
-    
+class EnterNumberViewController: KeyboardHandlingViewController {
     // MARK: - Views
     private let navigationTitle = "Forgot Password"
     private let mainLabel = UILabel()
     private let subLabel = UILabel()
     private let phoneNumberTextField = FDPhoneNumberTextField(flagType: .usa)
     private let signUpButton = FDButton(titleType: .signUp)
+    // MARK: - Properties
     private let popUp = PopUpView(data: [CountryCodes(name: "Russia", dialCode: "+7", code: "RU"),
                                          CountryCodes(name: "USA", dialCode: "+1", code: "US"),
                                          CountryCodes(name: "Kazakhstan", dialCode: "+76", code: "KZ")])
+    private var enterNumberViewOutput: EnterNumberViewOutput?
+    // MARK: - Init
+    init(enterNumberViewOutput: EnterNumberViewOutput) {
+        super.init(nibName: nil, bundle: nil)
+        self.enterNumberViewOutput = enterNumberViewOutput
+    }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        stopKeyboardListener()
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .darkGray
+        
         setupLayout()
+        setupObservers()
     }
     // MARK: - @objc
     @objc private func signUpButtonPressed() {
@@ -101,9 +115,12 @@ private extension EnterNumberViewController {
         
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
         signUpButton.action = signUpButtonPressed
+        bottomCTValue = -30
+        signUpButtonButtonCT = signUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
+                                                                    constant: bottomCTValue)
         
         NSLayoutConstraint.activate([
-            signUpButton.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 180),
+            signUpButtonButtonCT,
             signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             signUpButton.heightAnchor.constraint(equalToConstant: 48)

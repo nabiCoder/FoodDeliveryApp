@@ -7,6 +7,17 @@ class PasswordResetViewController: UIViewController {
     private let subLabel = UILabel()
     private let emailTextField = FDTextField(fildType: .email, fieldLabelText: "EMAIL ADDRESS")
     private let resetPasswordButton = FDButton(titleType: .resetPassword)
+    // MARK: - Properties
+    private var passwordResetViewOutput: PasswordResetViewOutput?
+    // MARK: - Init
+    init(passwordResetViewOutput: PasswordResetViewOutput) {
+        super.init(nibName: nil, bundle: nil)
+        self.passwordResetViewOutput = passwordResetViewOutput
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

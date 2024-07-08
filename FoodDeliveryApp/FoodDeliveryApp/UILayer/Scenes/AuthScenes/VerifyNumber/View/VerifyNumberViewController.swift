@@ -10,6 +10,17 @@ class VerifyNumberViewController: UIViewController {
     private let resendButton = UIButton()
     private let instructionButtonStackView = UIStackView()
     private let joinAgreementButton = UIButton()
+    // MARK: - Properties
+    private var verifyNumberViewOutput: VerifyNumberViewOutput?
+    // MARK: - Init
+    init(verifyNumberViewOutput: VerifyNumberViewOutput) {
+        super.init(nibName: nil, bundle: nil)
+        self.verifyNumberViewOutput = verifyNumberViewOutput
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()

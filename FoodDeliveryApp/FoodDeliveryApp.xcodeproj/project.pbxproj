@@ -25,6 +25,7 @@
 		392C133A2BF0F68500DBD790 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */; };
 		392C133C2BF0F6A700DBD790 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */; };
 		393224992BFE4BF60092DB5B /* FDSocialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393224982BFE4BF60092DB5B /* FDSocialButton.swift */; };
+		393F89DF2C3C6D5100B08548 /* KeyboardHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393F89DE2C3C6D5100B08548 /* KeyboardHandlingViewController.swift */; };
 		3943B7372C1F06A70078F349 /* VerifyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943B7362C1F06A70078F349 /* VerifyNumberViewController.swift */; };
 		3943B7392C1F42CC0078F349 /* FDCodeVerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943B7382C1F42CC0078F349 /* FDCodeVerifyTextField.swift */; };
 		3943B73B2C231BDC0078F349 /* FDCodeVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943B73A2C231BDC0078F349 /* FDCodeVerifyView.swift */; };
@@ -47,6 +48,11 @@
 		39CBD72B2BFA55DF000E04FA /* FDTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CBD72A2BFA55DF000E04FA /* FDTextField.swift */; };
 		39CD76672C3085360088C013 /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD76662C3085360088C013 /* AuthCoordinator.swift */; };
 		39CD76692C308DB70088C013 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD76682C308DB70088C013 /* LoginViewModel.swift */; };
+		39CD767A2C330DCD0088C013 /* CreateAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD76792C330DCD0088C013 /* CreateAccountViewModel.swift */; };
+		39CD767C2C330F670088C013 /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD767B2C330F670088C013 /* PasswordResetViewModel.swift */; };
+		39CD767E2C3310370088C013 /* PasswordResetSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD767D2C3310370088C013 /* PasswordResetSuccessViewModel.swift */; };
+		39CD76802C3314900088C013 /* EnterNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD767F2C3314900088C013 /* EnterNumberViewModel.swift */; };
+		39CD76822C3315770088C013 /* VerifyNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD76812C3315770088C013 /* VerifyNumberViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +76,7 @@
 		392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		393224982BFE4BF60092DB5B /* FDSocialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSocialButton.swift; sourceTree = "<group>"; };
+		393F89DE2C3C6D5100B08548 /* KeyboardHandlingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlingViewController.swift; sourceTree = "<group>"; };
 		3943B7362C1F06A70078F349 /* VerifyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumberViewController.swift; sourceTree = "<group>"; };
 		3943B7382C1F42CC0078F349 /* FDCodeVerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCodeVerifyTextField.swift; sourceTree = "<group>"; };
 		3943B73A2C231BDC0078F349 /* FDCodeVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCodeVerifyView.swift; sourceTree = "<group>"; };
@@ -92,6 +99,11 @@
 		39CBD72A2BFA55DF000E04FA /* FDTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDTextField.swift; sourceTree = "<group>"; };
 		39CD76662C3085360088C013 /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		39CD76682C308DB70088C013 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		39CD76792C330DCD0088C013 /* CreateAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewModel.swift; sourceTree = "<group>"; };
+		39CD767B2C330F670088C013 /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
+		39CD767D2C3310370088C013 /* PasswordResetSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetSuccessViewModel.swift; sourceTree = "<group>"; };
+		39CD767F2C3314900088C013 /* EnterNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumberViewModel.swift; sourceTree = "<group>"; };
+		39CD76812C3315770088C013 /* VerifyNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumberViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +196,7 @@
 		392C13242BEFD15100DBD790 /* UILayer */ = {
 			isa = PBXGroup;
 			children = (
+				393F89E02C3C70BA00B08548 /* Observers */,
 				39CBD7252BF7B40F000E04FA /* Factory */,
 				39CBD7262BF7B419000E04FA /* Views */,
 				39CBD7272BF7B433000E04FA /* Scenes */,
@@ -229,6 +242,14 @@
 				39CD766D2C308E4B0088C013 /* ViewModel */,
 			);
 			path = OnboardingScene;
+			sourceTree = "<group>";
+		};
+		393F89E02C3C70BA00B08548 /* Observers */ = {
+			isa = PBXGroup;
+			children = (
+				393F89DE2C3C6D5100B08548 /* KeyboardHandlingViewController.swift */,
+			);
+			path = Observers;
 			sourceTree = "<group>";
 		};
 		3943B7352C1F06580078F349 /* VerifyNumber */ = {
@@ -288,6 +309,7 @@
 		3997636E2C03A7F3007523E4 /* EnterNumber */ = {
 			isa = PBXGroup;
 			children = (
+				39CD76782C3308770088C013 /* Model */,
 				39CD76752C3094A10088C013 /* ViewModel */,
 				39CD76742C3094890088C013 /* Views */,
 			);
@@ -329,16 +351,6 @@
 		39CBD71F2BF7AADC000E04FA /* AuthScenes */ = {
 			isa = PBXGroup;
 			children = (
-				39CBD7222BF7AB13000E04FA /* Models */,
-				39CBD7212BF7AB10000E04FA /* ViewModels */,
-				39CBD7202BF7AB0D000E04FA /* Views */,
-			);
-			path = AuthScenes;
-			sourceTree = "<group>";
-		};
-		39CBD7202BF7AB0D000E04FA /* Views */ = {
-			isa = PBXGroup;
-			children = (
 				3943B7352C1F06580078F349 /* VerifyNumber */,
 				3997636E2C03A7F3007523E4 /* EnterNumber */,
 				3997636D2C03A7C6007523E4 /* PasswordResetSuccess */,
@@ -346,22 +358,7 @@
 				3997636B2C03A79C007523E4 /* CreateAccount */,
 				3997636A2C03A78B007523E4 /* Login */,
 			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		39CBD7212BF7AB10000E04FA /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		39CBD7222BF7AB13000E04FA /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				399763682C03A4C6007523E4 /* CountryCodes.swift */,
-			);
-			path = Models;
+			path = AuthScenes;
 			sourceTree = "<group>";
 		};
 		39CBD7252BF7B40F000E04FA /* Factory */ = {
@@ -439,6 +436,7 @@
 		39CD766F2C3094470088C013 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				39CD76792C330DCD0088C013 /* CreateAccountViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -454,6 +452,7 @@
 		39CD76712C3094620088C013 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				39CD767B2C330F670088C013 /* PasswordResetViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -469,6 +468,7 @@
 		39CD76732C3094790088C013 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				39CD767D2C3310370088C013 /* PasswordResetSuccessViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -486,6 +486,7 @@
 		39CD76752C3094A10088C013 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				39CD767F2C3314900088C013 /* EnterNumberViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -501,8 +502,17 @@
 		39CD76772C3094B50088C013 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				39CD76812C3315770088C013 /* VerifyNumberViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		39CD76782C3308770088C013 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				399763682C03A4C6007523E4 /* CountryCodes.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -579,16 +589,21 @@
 				392C130C2BEE3D9A00DBD790 /* ViewController.swift in Sources */,
 				39CBD7292BF9E137000E04FA /* FDButton.swift in Sources */,
 				399763652C028135007523E4 /* EnterNumberViewController.swift in Sources */,
+				39CD767A2C330DCD0088C013 /* CreateAccountViewModel.swift in Sources */,
 				392C13372BF0DB2700DBD790 /* TabBarController.swift in Sources */,
 				392C13202BEF8CC900DBD790 /* UIColor+Ext.swift in Sources */,
 				392C13282BEFD31200DBD790 /* BaseCoordinator.swift in Sources */,
 				392C13082BEE3D9A00DBD790 /* AppDelegate.swift in Sources */,
+				39CD76822C3315770088C013 /* VerifyNumberViewModel.swift in Sources */,
 				392C13352BF0DA6700DBD790 /* ProfileCoordinator.swift in Sources */,
+				393F89DF2C3C6D5100B08548 /* KeyboardHandlingViewController.swift in Sources */,
 				394BB1E12C107F6C007D2B75 /* FDPhoneNumberTextField.swift in Sources */,
+				39CD767E2C3310370088C013 /* PasswordResetSuccessViewModel.swift in Sources */,
 				399763632C027925007523E4 /* PasswordResetSuccessViewController.swift in Sources */,
 				399763672C03A3B4007523E4 /* PopUpView.swift in Sources */,
 				39A96AF12BF37990009FDC96 /* ReusableOnboardingViewController.swift in Sources */,
 				393224992BFE4BF60092DB5B /* FDSocialButton.swift in Sources */,
+				39CD76802C3314900088C013 /* EnterNumberViewModel.swift in Sources */,
 				392C13332BF0DA4500DBD790 /* OrdersCoordinator.swift in Sources */,
 				39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */,
 				399763612C0252B4007523E4 /* PasswordResetViewController.swift in Sources */,
@@ -599,6 +614,7 @@
 				3943B7392C1F42CC0078F349 /* FDCodeVerifyTextField.swift in Sources */,
 				392C132C2BEFFEFD00DBD790 /* OnboardingCoordinator.swift in Sources */,
 				392C13312BF0DA1600DBD790 /* SearchCoordinator.swift in Sources */,
+				39CD767C2C330F670088C013 /* PasswordResetViewModel.swift in Sources */,
 				3943B7372C1F06A70078F349 /* VerifyNumberViewController.swift in Sources */,
 				392C133C2BF0F6A700DBD790 /* OnboardingViewModel.swift in Sources */,
 				392C130A2BEE3D9A00DBD790 /* SceneDelegate.swift in Sources */,

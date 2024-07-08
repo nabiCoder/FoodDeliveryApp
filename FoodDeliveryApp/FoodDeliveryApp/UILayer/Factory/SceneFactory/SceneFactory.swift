@@ -44,25 +44,43 @@ struct SceneFactory {
         return loginViewController
     }
     // MARK: - Create Account
-    static func makeCreateAccountScene(coordinator: AuthCoordinator) {
+    static func makeCreateAccountScene(coordinator: AuthCoordinator) -> CreateAccountViewController {
+        let createAccountViewModel = CreateAccountViewModel(authCoordinator: coordinator)
+        let createAccountViewController = CreateAccountViewController(createAccountViewOutput: createAccountViewModel)
         
+        return createAccountViewController
     }
     // MARK: - Password Reset
-    static func makePasswordResetScene(coordinator: AuthCoordinator) {
+    static func makePasswordResetScene(coordinator: AuthCoordinator) -> PasswordResetViewController {
+        let passwordResetViewModel = PasswordResetViewModel(authCoordinator: coordinator)
+        let passwordResetViewController = PasswordResetViewController(passwordResetViewOutput: passwordResetViewModel)
         
+        return passwordResetViewController
     }
     // MARK: - Password Reset Success
-    static func makePasswordResetSuccessScene(coordinator: AuthCoordinator) {
+    static func makePasswordResetSuccessScene(coordinator: AuthCoordinator,
+                                              email: String) -> PasswordResetSuccessViewController {
+        let passwordResetSuccessViewModel = PasswordResetSuccessViewModel(authCoordinator: coordinator)
+        let passwordResetSuccessVC = PasswordResetSuccessViewController(email: email,
+                                                                        PRSViewOutput: passwordResetSuccessViewModel)
         
+        return passwordResetSuccessVC
     }
     // MARK: - Enter Number
-    static func makeEnterNumberScene(coordinator: AuthCoordinator) {
+    static func makeEnterNumberScene(coordinator: AuthCoordinator) -> EnterNumberViewController {
+        let enterNumberViewModel = EnterNumberViewModel(authCoordinator: coordinator)
+        let enterNumberViewController = EnterNumberViewController(enterNumberViewOutput: enterNumberViewModel)
         
+        return enterNumberViewController
     }
     // MARK: - Verify Number
-    static func makeVerifyNumberScene(coordinator: AuthCoordinator) {
+    static func makeVerifyNumberScene(coordinator: AuthCoordinator) -> VerifyNumberViewController {
+        let verifyNumberViewModel = VerifyNumberViewModel(authCoordinator: coordinator)
+        let verifyNumberViewController = VerifyNumberViewController(verifyNumberViewOutput: verifyNumberViewModel)
         
+        return verifyNumberViewController
     }
+    
     // MARK: - Main Flow
     static func makeMainFlow(appCoordinator: AppCoordinator,
                              finishDelegate: CoordinatorFinishDelegate,
@@ -125,6 +143,7 @@ struct SceneFactory {
         appCoordinator.addChildCoordinator(onboardingCoordinator)
         onboardingCoordinator.start()
     }
+    // MARK: - Auth Flow
     static func makeAuthFlow(appCoordinator: AppCoordinator,
                              finishDelegate: CoordinatorFinishDelegate,
                              navigationController: UINavigationController) {
