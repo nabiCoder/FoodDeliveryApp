@@ -1,6 +1,6 @@
 import UIKit
 
-class KeyboardHandlingViewController: UIViewController {
+class KeyboardHandling: KeyboardDismissViewController {
     var isKeyboardShow = false
     var bottomCTValue: CGFloat = 0.0
     var signUpButtonButtonCT: NSLayoutConstraint!
@@ -19,17 +19,9 @@ class KeyboardHandlingViewController: UIViewController {
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
-
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
         view.addGestureRecognizer(tapGesture)
-    }
-
-    func stopKeyboardListener() {
-        NotificationCenter.default.removeObserver(self)
-    }
-
-    @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        view.endEditing(true)
     }
 
     @objc func keyboardWillShow(_ notification: Notification) {

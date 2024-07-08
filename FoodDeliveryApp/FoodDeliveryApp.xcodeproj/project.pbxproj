@@ -25,7 +25,8 @@
 		392C133A2BF0F68500DBD790 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */; };
 		392C133C2BF0F6A700DBD790 /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */; };
 		393224992BFE4BF60092DB5B /* FDSocialButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393224982BFE4BF60092DB5B /* FDSocialButton.swift */; };
-		393F89DF2C3C6D5100B08548 /* KeyboardHandlingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393F89DE2C3C6D5100B08548 /* KeyboardHandlingViewController.swift */; };
+		393F89DF2C3C6D5100B08548 /* KeyboardHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393F89DE2C3C6D5100B08548 /* KeyboardHandling.swift */; };
+		393F89E22C3C758700B08548 /* KeyboardDismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 393F89E12C3C758700B08548 /* KeyboardDismissViewController.swift */; };
 		3943B7372C1F06A70078F349 /* VerifyNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943B7362C1F06A70078F349 /* VerifyNumberViewController.swift */; };
 		3943B7392C1F42CC0078F349 /* FDCodeVerifyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943B7382C1F42CC0078F349 /* FDCodeVerifyTextField.swift */; };
 		3943B73B2C231BDC0078F349 /* FDCodeVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3943B73A2C231BDC0078F349 /* FDCodeVerifyView.swift */; };
@@ -76,7 +77,8 @@
 		392C13392BF0F68500DBD790 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		392C133B2BF0F6A700DBD790 /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		393224982BFE4BF60092DB5B /* FDSocialButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDSocialButton.swift; sourceTree = "<group>"; };
-		393F89DE2C3C6D5100B08548 /* KeyboardHandlingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandlingViewController.swift; sourceTree = "<group>"; };
+		393F89DE2C3C6D5100B08548 /* KeyboardHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardHandling.swift; sourceTree = "<group>"; };
+		393F89E12C3C758700B08548 /* KeyboardDismissViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardDismissViewController.swift; sourceTree = "<group>"; };
 		3943B7362C1F06A70078F349 /* VerifyNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumberViewController.swift; sourceTree = "<group>"; };
 		3943B7382C1F42CC0078F349 /* FDCodeVerifyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCodeVerifyTextField.swift; sourceTree = "<group>"; };
 		3943B73A2C231BDC0078F349 /* FDCodeVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDCodeVerifyView.swift; sourceTree = "<group>"; };
@@ -247,7 +249,8 @@
 		393F89E02C3C70BA00B08548 /* Observers */ = {
 			isa = PBXGroup;
 			children = (
-				393F89DE2C3C6D5100B08548 /* KeyboardHandlingViewController.swift */,
+				393F89DE2C3C6D5100B08548 /* KeyboardHandling.swift */,
+				393F89E12C3C758700B08548 /* KeyboardDismissViewController.swift */,
 			);
 			path = Observers;
 			sourceTree = "<group>";
@@ -596,7 +599,7 @@
 				392C13082BEE3D9A00DBD790 /* AppDelegate.swift in Sources */,
 				39CD76822C3315770088C013 /* VerifyNumberViewModel.swift in Sources */,
 				392C13352BF0DA6700DBD790 /* ProfileCoordinator.swift in Sources */,
-				393F89DF2C3C6D5100B08548 /* KeyboardHandlingViewController.swift in Sources */,
+				393F89DF2C3C6D5100B08548 /* KeyboardHandling.swift in Sources */,
 				394BB1E12C107F6C007D2B75 /* FDPhoneNumberTextField.swift in Sources */,
 				39CD767E2C3310370088C013 /* PasswordResetSuccessViewModel.swift in Sources */,
 				399763632C027925007523E4 /* PasswordResetSuccessViewController.swift in Sources */,
@@ -628,6 +631,7 @@
 				392C132A2BEFFD3600DBD790 /* AppCoordinator.swift in Sources */,
 				399763722C03A8AE007523E4 /* PopUpCell.swift in Sources */,
 				39CD76692C308DB70088C013 /* LoginViewModel.swift in Sources */,
+				393F89E22C3C758700B08548 /* KeyboardDismissViewController.swift in Sources */,
 				392C132F2BF0D9D400DBD790 /* HomeCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

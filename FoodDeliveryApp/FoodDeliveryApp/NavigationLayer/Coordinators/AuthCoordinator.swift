@@ -5,7 +5,7 @@ class AuthCoordinator: BaseCoordinator {
     private let faktory = SceneFactory.self
     
     override func start() {
-//        showLogin()
+//       showLogin()
 //        showCreateAccount()
         showEnterNumber()
     }

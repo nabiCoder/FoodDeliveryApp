@@ -1,6 +1,6 @@
 import UIKit
 
-class EnterNumberViewController: KeyboardHandlingViewController {
+class EnterNumberViewController: KeyboardHandling {
     // MARK: - Views
     private let navigationTitle = "Forgot Password"
     private let mainLabel = UILabel()

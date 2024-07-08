@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: KeyboardDismissViewController {
     // MARK: - Views
     private let navigationLoginTitle = "Sign In"
     private let mainLoginLabel = UILabel()
@@ -18,7 +18,6 @@ class LoginViewController: UIViewController {
     private let socialButtonsStackView = UIStackView()
     // MARK: - Properties
     private var loginViewOutput: LoginViewOutput?
-    private var isKeyboardShow = false
     // MARK: - Init
     init(loginViewOutput: LoginViewOutput) {
         super.init(nibName: nil, bundle: nil)
@@ -28,11 +27,14 @@ class LoginViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    deinit {
+        stopKeyboardListener()
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
-        setupObservers()
     }
     // MARK: - @objc
     @objc private func passwordButtonPressed() {
@@ -266,31 +268,5 @@ private extension LoginViewController {
         
         socialButtonsStackView.addArrangedSubview(facebookButton)
         socialButtonsStackView.addArrangedSubview(googleButton)
-    }
-}
-// MARK: - Observers
-private extension LoginViewController {
-    func setupObservers() {
-        startKeyboardListener()
-    }
-    
-    func startKeyboardListener() {
-        
-    }
-    
-    func stopKeyboardListener() {
-        
-    }
-    
-    func handleTap() {
-        
-    }
-    
-    func keyboardWillShow() {
-        
-    }
-    
-    func keyboardWillHide() {
-        
     }
 }
