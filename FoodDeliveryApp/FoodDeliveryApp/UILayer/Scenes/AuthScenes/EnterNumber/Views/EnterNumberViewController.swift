@@ -1,6 +1,6 @@
 import UIKit
 
-class EnterNumberViewController: KeyboardHandling {
+class EnterNumberViewController: KeyboardDismissViewController {
     // MARK: - Views
     private let navigationTitle = "Forgot Password"
     private let mainLabel = UILabel()
@@ -12,6 +12,10 @@ class EnterNumberViewController: KeyboardHandling {
                                          CountryCodes(name: "USA", dialCode: "+1", code: "US"),
                                          CountryCodes(name: "Kazakhstan", dialCode: "+76", code: "KZ")])
     private var enterNumberViewOutput: EnterNumberViewOutput?
+    private var isKeyboardShow = false
+    // MARK: - Constraints
+    private var bottomCTValue: CGFloat = 0.0
+    private var signUpButtonButtonCT = NSLayoutConstraint()
     // MARK: - Init
     init(enterNumberViewOutput: EnterNumberViewOutput) {
         super.init(nibName: nil, bundle: nil)
@@ -30,7 +34,7 @@ class EnterNumberViewController: KeyboardHandling {
         super.viewDidLoad()
         
         setupLayout()
-        setupObservers()
+        setupListener()
     }
     // MARK: - @objc
     @objc private func signUpButtonPressed() {
@@ -139,5 +143,43 @@ private extension EnterNumberViewController {
             popUp.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -80),
             popUp.heightAnchor.constraint(equalToConstant: 120)
         ])
+    }
+}
+// MARK: - Keyboard Listener
+private extension EnterNumberViewController {
+    func setupListener() {
+        startKeyboardListener()
+    }
+
+    func startKeyboardListener() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)),
+                                               name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
+                                               name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        else { return }
+
+        let keyboardHeight = keyboardFrame.cgRectValue.height
+
+        if !isKeyboardShow {
+            UIView.animate(withDuration: 0.3) {
+                self.signUpButtonButtonCT.constant -= keyboardHeight
+                self.view.layoutIfNeeded()
+                self.isKeyboardShow = true
+            }
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        if isKeyboardShow {
+            UIView.animate(withDuration: 0.3) {
+                self.signUpButtonButtonCT.constant = self.bottomCTValue
+                self.view.layoutIfNeeded()
+                self.isKeyboardShow = false
+            }
+        }
     }
 }

@@ -13,8 +13,6 @@ class AuthCoordinator: BaseCoordinator {
     override func finish() {
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
-    
-    
 }
 private extension AuthCoordinator {
     func showLogin() {

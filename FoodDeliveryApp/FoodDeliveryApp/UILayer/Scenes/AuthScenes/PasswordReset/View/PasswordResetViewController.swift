@@ -1,6 +1,6 @@
 import UIKit
 
-class PasswordResetViewController: UIViewController {
+class PasswordResetViewController: KeyboardDismissViewController {
     // MARK: - Views
     private let navigationTitle = "Forgot Password"
     private let mainLabel = UILabel()
@@ -13,6 +13,10 @@ class PasswordResetViewController: UIViewController {
     init(passwordResetViewOutput: PasswordResetViewOutput) {
         super.init(nibName: nil, bundle: nil)
         self.passwordResetViewOutput = passwordResetViewOutput
+    }
+    
+    deinit {
+        stopKeyboardListener()
     }
     
     required init?(coder: NSCoder) {

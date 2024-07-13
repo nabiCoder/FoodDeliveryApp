@@ -1,6 +1,6 @@
 import UIKit
 
-class VerifyNumberViewController: UIViewController {
+class VerifyNumberViewController: KeyboardDismissViewController {
     // MARK: - Views
     private let mainLabel = UILabel()
     private let subLabel = UILabel()
@@ -20,6 +20,10 @@ class VerifyNumberViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        stopKeyboardListener()
     }
     // MARK: - Lifecycle
     override func viewDidLoad() {
