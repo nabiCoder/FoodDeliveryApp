@@ -17,4 +17,10 @@ extension String {
         }
         return formattedString
     }
+    
+    var isEmail: Bool {
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.(ru|com)"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: self)
+    }
 }

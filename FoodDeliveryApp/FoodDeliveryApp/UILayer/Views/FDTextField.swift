@@ -17,9 +17,9 @@ enum CheckmarkState {
 class FDTextField: UIView, UITextFieldDelegate {
     // MARK: - Properties
     private lazy var fieldLabel = UILabel()
-    private lazy var textField = UITextField()
-    private lazy var checkmarkImage = UIImageView()
-    private lazy var togglePasswordButton = UIButton()
+    lazy var textField = UITextField()
+    lazy var checkmarkImage = UIImageView()
+    lazy var passwordVisibilityButton = UIButton()
     private lazy var textFieldShadow = UIView()
     
     private var fieldType: FieldType
@@ -29,14 +29,6 @@ class FDTextField: UIView, UITextFieldDelegate {
     
     var fieldLabelText: String {
         didSet { updateFildLabelText() }
-    }
-    
-    var buttonState: PasswordButtonState? {
-        didSet { updatePasswordButtonImage() }
-    }
-    
-    var checkmarkState: CheckmarkState? {
-        didSet { updateCheckmarkImage() }
     }
     
     // MARK: - Init
@@ -56,7 +48,6 @@ class FDTextField: UIView, UITextFieldDelegate {
     @objc private func buttonPressed() {
         guard let action = self.action else { return }
         action()
-        updatePasswordButtonImage()
     }
 }
 
@@ -64,23 +55,6 @@ class FDTextField: UIView, UITextFieldDelegate {
 private extension FDTextField {
     func updateFildLabelText() {
         fieldLabel.text = fieldLabelText
-    }
-    
-    func updatePasswordButtonImage() {
-        textField.isSecureTextEntry.toggle()
-        if textField.isSecureTextEntry {
-            togglePasswordButton.setImage(.invisible, for: .normal)
-        } else {
-            togglePasswordButton.setImage(.visible, for: .normal)
-        }
-    }
-    
-    func updateCheckmarkImage() {
-        if checkmarkState == .done {
-            checkmarkImage.tintColor = AppColors.accentOrangeColor
-        } else {
-            checkmarkImage.tintColor = AppColors.badyTextGreyColor
-        }
     }
 }
 // MARK: - Extensions, setupLayout
@@ -99,8 +73,12 @@ private extension FDTextField {
         case .email:
             setupCheckmark()
             textField.isSecureTextEntry = false
+            textField.keyboardType = .emailAddress
+            textField.textContentType = .emailAddress
         case .password:
             setupPasswordButton()
+            textField.textContentType = .password
+            textField.keyboardType = .default
         }
         setupTextFieldShadow()
     }
@@ -126,7 +104,6 @@ private extension FDTextField {
         addSubview(textField)
         
         textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Enter text"
         textField.isUserInteractionEnabled = true
         textField.isSecureTextEntry = true
         textField.delegate = self
@@ -156,20 +133,20 @@ private extension FDTextField {
     }
     
     func setupPasswordButton() {
-        addSubview(togglePasswordButton)
+        addSubview(passwordVisibilityButton)
         
-        togglePasswordButton.translatesAutoresizingMaskIntoConstraints = false
-        togglePasswordButton.tintColor = AppColors.badyTextGreyColor
-        togglePasswordButton.addTarget(self,
+        passwordVisibilityButton.translatesAutoresizingMaskIntoConstraints = false
+        passwordVisibilityButton.tintColor = AppColors.badyTextGreyColor
+        passwordVisibilityButton.addTarget(self,
                                        action: #selector(buttonPressed),
                                        for: .touchUpInside)
-        togglePasswordButton.setImage(.invisible, for: .normal)
+        passwordVisibilityButton.setImage(.invisible, for: .normal)
         
         NSLayoutConstraint.activate([
-            togglePasswordButton.centerYAnchor.constraint(equalTo: fieldLabel.centerYAnchor),
-            togglePasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            togglePasswordButton.widthAnchor.constraint(equalToConstant: 24),
-            togglePasswordButton.heightAnchor.constraint(equalToConstant: 24)
+            passwordVisibilityButton.centerYAnchor.constraint(equalTo: fieldLabel.centerYAnchor),
+            passwordVisibilityButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            passwordVisibilityButton.widthAnchor.constraint(equalToConstant: 24),
+            passwordVisibilityButton.heightAnchor.constraint(equalToConstant: 24)
         ])
     }
     

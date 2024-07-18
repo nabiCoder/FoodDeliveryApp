@@ -40,8 +40,8 @@
 		39713C562C43178B007F04BF /* RxRelay-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 39713C552C43178B007F04BF /* RxRelay-Dynamic */; };
 		39713C582C43178B007F04BF /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 39713C572C43178B007F04BF /* RxSwift */; };
 		39713C5A2C43178B007F04BF /* RxSwift-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 39713C592C43178B007F04BF /* RxSwift-Dynamic */; };
-		39713C5C2C43178B007F04BF /* RxTest in Frameworks */ = {isa = PBXBuildFile; productRef = 39713C5B2C43178B007F04BF /* RxTest */; };
-		39713C5E2C43178B007F04BF /* RxTest-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 39713C5D2C43178B007F04BF /* RxTest-Dynamic */; };
+		39713C602C454DDC007F04BF /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39713C5F2C454DDC007F04BF /* UITextField+Extension.swift */; };
+		39713C622C4551B9007F04BF /* FDLoaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39713C612C4551B9007F04BF /* FDLoaderView.swift */; };
 		3997635F2C01E37A007523E4 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */; };
 		399763612C0252B4007523E4 /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763602C0252B4007523E4 /* PasswordResetViewController.swift */; };
 		399763632C027925007523E4 /* PasswordResetSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */; };
@@ -93,6 +93,8 @@
 		394BB1E02C107F6C007D2B75 /* FDPhoneNumberTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDPhoneNumberTextField.swift; sourceTree = "<group>"; };
 		394BB1E32C147A1F007D2B75 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		394BB1E52C147B14007D2B75 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		39713C5F2C454DDC007F04BF /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
+		39713C612C4551B9007F04BF /* FDLoaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FDLoaderView.swift; sourceTree = "<group>"; };
 		3997635E2C01E37A007523E4 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		399763602C0252B4007523E4 /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		399763622C027925007523E4 /* PasswordResetSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetSuccessViewController.swift; sourceTree = "<group>"; };
@@ -122,14 +124,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				39713C5A2C43178B007F04BF /* RxSwift-Dynamic in Frameworks */,
-				39713C5C2C43178B007F04BF /* RxTest in Frameworks */,
 				39713C542C43178B007F04BF /* RxRelay in Frameworks */,
 				39713C522C43178B007F04BF /* RxCocoa-Dynamic in Frameworks */,
 				39713C562C43178B007F04BF /* RxRelay-Dynamic in Frameworks */,
 				39713C502C43178B007F04BF /* RxCocoa in Frameworks */,
 				39713C4C2C43178B007F04BF /* RxBlocking in Frameworks */,
 				39713C4E2C43178B007F04BF /* RxBlocking-Dynamic in Frameworks */,
-				39713C5E2C43178B007F04BF /* RxTest-Dynamic in Frameworks */,
 				39713C582C43178B007F04BF /* RxSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +286,7 @@
 			children = (
 				394BB1E32C147A1F007D2B75 /* String+Extension.swift */,
 				394BB1E52C147B14007D2B75 /* UIView+Extension.swift */,
+				39713C5F2C454DDC007F04BF /* UITextField+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -394,6 +395,7 @@
 			children = (
 				394BB1E22C1479F2007D2B75 /* Extensions */,
 				39CBD7282BF9E137000E04FA /* FDButton.swift */,
+				39713C612C4551B9007F04BF /* FDLoaderView.swift */,
 				39CBD72A2BFA55DF000E04FA /* FDTextField.swift */,
 				393224982BFE4BF60092DB5B /* FDSocialButton.swift */,
 				394BB1E02C107F6C007D2B75 /* FDPhoneNumberTextField.swift */,
@@ -560,8 +562,6 @@
 				39713C552C43178B007F04BF /* RxRelay-Dynamic */,
 				39713C572C43178B007F04BF /* RxSwift */,
 				39713C592C43178B007F04BF /* RxSwift-Dynamic */,
-				39713C5B2C43178B007F04BF /* RxTest */,
-				39713C5D2C43178B007F04BF /* RxTest-Dynamic */,
 			);
 			productName = FoodDeliveryApp;
 			productReference = 392C13042BEE3D9A00DBD790 /* FoodDeliveryApp.app */;
@@ -620,6 +620,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39713C602C454DDC007F04BF /* UITextField+Extension.swift in Sources */,
 				394BB1E62C147B14007D2B75 /* UIView+Extension.swift in Sources */,
 				392C130C2BEE3D9A00DBD790 /* ViewController.swift in Sources */,
 				39CBD7292BF9E137000E04FA /* FDButton.swift in Sources */,
@@ -640,6 +641,7 @@
 				39CD76802C3314900088C013 /* EnterNumberViewModel.swift in Sources */,
 				392C13332BF0DA4500DBD790 /* OrdersCoordinator.swift in Sources */,
 				39CBD7242BF7AB54000E04FA /* LoginViewController.swift in Sources */,
+				39713C622C4551B9007F04BF /* FDLoaderView.swift in Sources */,
 				399763612C0252B4007523E4 /* PasswordResetViewController.swift in Sources */,
 				394BB1E42C147A1F007D2B75 /* String+Extension.swift in Sources */,
 				39CD76672C3085360088C013 /* AuthCoordinator.swift in Sources */,
@@ -812,8 +814,8 @@
 				INFOPLIST_FILE = FoodDeliveryApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -839,8 +841,8 @@
 				INFOPLIST_FILE = FoodDeliveryApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -928,16 +930,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 39713C4A2C43178B007F04BF /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = "RxSwift-Dynamic";
-		};
-		39713C5B2C43178B007F04BF /* RxTest */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39713C4A2C43178B007F04BF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = RxTest;
-		};
-		39713C5D2C43178B007F04BF /* RxTest-Dynamic */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 39713C4A2C43178B007F04BF /* XCRemoteSwiftPackageReference "RxSwift" */;
-			productName = "RxTest-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

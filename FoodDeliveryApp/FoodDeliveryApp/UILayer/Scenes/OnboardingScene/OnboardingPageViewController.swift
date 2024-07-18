@@ -52,8 +52,6 @@ class OnboardingPageViewController: UIViewController {
     }
     
     private func proceedBasedOnPageIndex() {
-        print("current page = \(currentPageIndex)")
-        print("page count = \(pages.count)")
         currentPageIndex == pages.count - 1 ? onboardingViewOutput?.onboardingFinish() : nextViewController()
     }
 }

@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class LoginViewController: KeyboardDismissViewController {
     // MARK: - Views
@@ -16,39 +18,27 @@ class LoginViewController: KeyboardDismissViewController {
     private let facebookButton = FDSocialButton(type: .facebook)
     private let googleButton = FDSocialButton(type: .google)
     private let socialButtonsStackView = UIStackView()
+    private let loaderView = FDLoaderView()
     // MARK: - Properties
-    private var loginViewOutput: LoginViewOutput?
+    private var viewModel: MyViewModelType
+    private let disposeBag = DisposeBag()
     // MARK: - Init
-    init(loginViewOutput: LoginViewOutput) {
+    init(viewModel: MyViewModelType) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.loginViewOutput = loginViewOutput
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        stopKeyboardListener()
-    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        rxBindings()
     }
     // MARK: - @objc
-    @objc private func passwordButtonPressed() {
-        print("passwordButtonPressed")
-    }
-    @objc private func forgotPasswordButtonPressed() {
-        print("forgotPasswordButtonPressed")
-    }
-    @objc private func signInButtonPressed() {
-        print("siegnInButtonPressed")
-    }
-    @objc private func newAccountButtonPressed() {
-        print("newAccountButtonPressed")
-    }
     @objc private func facebookButtonPressed() {
         print("facebookButtonPressed")
     }
@@ -70,10 +60,11 @@ private extension LoginViewController {
         setupNoAccountLabel()
         setupNewAccountButton()
         setupCreateAccountStackView()
-        setupOrLabel() 
+        setupOrLabel()
         setupFacebookButton()
         setupGoogleButton()
         setupSocialButtonsStackView()
+        setupLoaderView()
     }
     
     func setupView() {
@@ -81,7 +72,7 @@ private extension LoginViewController {
     }
     
     func setupNavigationController() {
-        navigationController?.title = navigationLoginTitle
+        //navigationController?.title = navigationLoginTitle
     }
     
     func setupMainLoginLabel() {
@@ -136,7 +127,6 @@ private extension LoginViewController {
     func setupPasswordLoginTextField() {
         view.addSubview(passwordLoginTextField)
         
-        passwordLoginTextField.action = passwordButtonPressed
         passwordLoginTextField.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -154,9 +144,6 @@ private extension LoginViewController {
         forgotPasswordButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 12)
         forgotPasswordButton.setTitleColor(AppColors.badyTextGreyColor, for: .normal)
         forgotPasswordButton.setTitle("Forget Password?", for: .normal)
-        forgotPasswordButton.addTarget(self,
-                                       action: #selector(forgotPasswordButtonPressed),
-                                       for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             forgotPasswordButton.topAnchor.constraint(equalTo: passwordLoginTextField.bottomAnchor, constant: 20),
@@ -170,7 +157,6 @@ private extension LoginViewController {
         view.addSubview(signInButton)
         
         signInButton.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.action = signInButtonPressed
         
         NSLayoutConstraint.activate([
             signInButton.topAnchor.constraint(equalTo: forgotPasswordButton.bottomAnchor, constant: 24),
@@ -196,9 +182,6 @@ private extension LoginViewController {
         newAccountButton.setTitle("Create new account.", for: .normal)
         newAccountButton.setTitleColor(AppColors.accentOrangeColor, for: .normal)
         newAccountButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 12)
-        newAccountButton.addTarget(self,
-                                   action: #selector(newAccountButtonPressed),
-                                   for: .touchUpInside)
     }
     
     func setupCreateAccountStackView() {
@@ -241,14 +224,20 @@ private extension LoginViewController {
         view.addSubview(facebookButton)
         
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
-        facebookButton.action = facebookButtonPressed
+        facebookButton.action = { [weak self] in
+            guard let self = self else { return }
+            self.facebookButtonPressed()
+        }
     }
     
     func setupGoogleButton() {
         view.addSubview(googleButton)
         
         googleButton.translatesAutoresizingMaskIntoConstraints = false
-        googleButton.action = googleButtonPressed
+        googleButton.action = { [weak self] in
+            guard let self = self else { return }
+            self.googleButtonPressed()
+        }
     }
     
     func setupSocialButtonsStackView() {
@@ -268,5 +257,131 @@ private extension LoginViewController {
         
         socialButtonsStackView.addArrangedSubview(facebookButton)
         socialButtonsStackView.addArrangedSubview(googleButton)
+    }
+    
+    func setupLoaderView() {
+        view.addSubview(loaderView)
+        
+        loaderView.translatesAutoresizingMaskIntoConstraints = false
+        loaderView.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            loaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            loaderView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+    }
+}
+// MARK: - RxSwift
+private extension LoginViewController {
+    
+    func rxBindings() {
+        inputBindings()
+        outputBindings()
+    }
+    
+    func inputBindings() {
+        emailLoginTextField.textField.rx.text.orEmpty.bind(to: viewModel.inputs.emailText).disposed(by: disposeBag)
+        passwordLoginTextField.textField.rx.text.orEmpty.bind(to: viewModel.inputs.passwordText).disposed(by: disposeBag)
+        
+        signInButton.button.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.signInButtonTapped()
+        }.disposed(by: disposeBag)
+        
+        passwordLoginTextField.passwordVisibilityButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.updatePasswordVisibility()
+        }.disposed(by: disposeBag)
+        
+        forgotPasswordButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.forgotPasswordButtonTapped()
+        }.disposed(by: disposeBag)
+        
+        newAccountButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.newAccountButtonTapped()
+        }.disposed(by: disposeBag)
+    }
+    
+    func outputBindings() {
+        viewModel.outputs.isValidEmail
+            .subscribe(onNext:  { [weak self] isValid in
+                guard let self = self else { return }
+                let targetColor: UIColor = isValid ? AppColors.accentOrangeColor : AppColors.badyTextGreyColor
+                self.animateColorChange(of: self.emailLoginTextField.checkmarkImage, to: targetColor)
+            })
+            .disposed(by: disposeBag)
+        
+        
+        viewModel.outputs.passwordVisibilityChanged
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.animatePasswordVisibilityChange()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.startLoader
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.animateLoader(start: true)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.stopLoader
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.animateLoader(start: false)
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.shakeEmailTextField
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.emailLoginTextField.textField.shakeWithColorChange()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.shakePasswordTextField
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.passwordLoginTextField.textField.shakeWithColorChange()
+            })
+            .disposed(by: disposeBag)
+    }
+}
+// MARK: - Animating Methods
+private extension LoginViewController {
+    func animateColorChange(of view: UIView, to color: UIColor) {
+        UIView.animate(withDuration: 0.3) {
+            view.tintColor = color
+        }
+    }
+    
+    func animatePasswordVisibilityChange() {
+        UIView.transition(with: passwordLoginTextField.textField, 
+                          duration: 0.2,
+                          options: .transitionCrossDissolve) {
+            self.passwordLoginTextField.textField.isSecureTextEntry.toggle()
+        }
+        
+        let newImage: UIImage = passwordLoginTextField.textField.isSecureTextEntry ? .invisible : .visible
+        
+        UIView.transition(with: passwordLoginTextField.passwordVisibilityButton,
+                          duration: 0.2,
+                          options: .transitionCrossDissolve) {
+            self.passwordLoginTextField.passwordVisibilityButton.setImage(newImage, for: .normal)
+        }
+    }
+    
+    func animateLoader(start: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.loaderView.isHidden = !start
+            if start {
+                self.loaderView.startLoader()
+            } else {
+                self.loaderView.stopLoader()
+            }
+        }
     }
 }

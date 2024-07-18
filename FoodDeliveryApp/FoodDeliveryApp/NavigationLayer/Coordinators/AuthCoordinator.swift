@@ -5,13 +5,20 @@ class AuthCoordinator: BaseCoordinator {
     private let faktory = SceneFactory.self
     
     override func start() {
-//       showLogin()
-//        showCreateAccount()
-        showEnterNumber()
+       showLogin()
     }
     
     override func finish() {
+        print("AuthCoordinator finish")
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
+    }
+    
+    func goToPasswordReset() {
+        showPasswordReset()
+    }
+    
+    func goToCreateAccount() {
+        showCreateAccount()
     }
 }
 private extension AuthCoordinator {

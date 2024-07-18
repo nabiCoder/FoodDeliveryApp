@@ -15,7 +15,7 @@ enum FDButtonTitle: String {
 
 class FDButton: UIView {
     // MARK: - Properties
-    private let button = UIButton()
+    lazy var button = UIButton()
     private var title: FDButtonTitle {
         didSet { updateButtonTitle() }
     }

@@ -7,6 +7,10 @@ class KeyboardDismissViewController: UIViewController {
         setupObservers()
     }
     
+    deinit {
+        stopKeyboardListener()
+    }
+    
     private func setupObservers() {
         startKeyboardListener()
     }
