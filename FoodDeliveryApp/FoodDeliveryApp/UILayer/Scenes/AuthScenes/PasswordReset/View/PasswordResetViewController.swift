@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class PasswordResetViewController: KeyboardDismissViewController {
     // MARK: - Views
@@ -8,15 +10,12 @@ class PasswordResetViewController: KeyboardDismissViewController {
     private let emailTextField = FDTextField(fildType: .email, fieldLabelText: "EMAIL ADDRESS")
     private let resetPasswordButton = FDButton(titleType: .resetPassword)
     // MARK: - Properties
-    private var passwordResetViewOutput: PasswordResetViewOutput?
+    private var viewModel: PasswordResetViewModelType
+    private let disposeBag = DisposeBag()
     // MARK: - Init
-    init(passwordResetViewOutput: PasswordResetViewOutput) {
+    init(viewModel: PasswordResetViewModelType) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.passwordResetViewOutput = passwordResetViewOutput
-    }
-    
-    deinit {
-        stopKeyboardListener()
     }
     
     required init?(coder: NSCoder) {
@@ -26,6 +25,7 @@ class PasswordResetViewController: KeyboardDismissViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        rxBindings()
     }
     // MARK: - @objc
     @objc private func resetPasswordButtonPressed() {
@@ -112,5 +112,46 @@ private extension PasswordResetViewController {
             resetPasswordButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             resetPasswordButton.heightAnchor.constraint(equalToConstant: 48)
         ])
+    }
+}
+// MARK: - RxSwift
+private extension PasswordResetViewController {
+    func rxBindings() {
+        inputBindings()
+        outputBindings()
+    }
+    
+    func inputBindings() {
+        emailTextField.textField.rx.text.orEmpty.bind(to: viewModel.inputs.emailText).disposed(by: disposeBag)
+        
+        resetPasswordButton.button.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.resetButtonTapped()
+        }.disposed(by: disposeBag)
+    }
+    
+    func outputBindings() {
+        viewModel.outputs.isValidEmail
+            .subscribe(onNext:  { [weak self] isValid in
+                guard let self = self else { return }
+                let targetColor: UIColor = isValid ? AppColors.accentOrangeColor : AppColors.badyTextGreyColor
+                self.animateColorChange(of: self.emailTextField.checkmarkImage, to: targetColor)
+            })
+            .disposed(by: disposeBag)
+    
+        viewModel.outputs.shakeEmailTextField
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.emailTextField.textField.shakeWithColorChange()
+            })
+            .disposed(by: disposeBag)
+    }
+}
+// MARK: - Animating Methods
+private extension PasswordResetViewController {
+    func animateColorChange(of view: UIView, to color: UIColor) {
+        UIView.animate(withDuration: 0.3) {
+            view.tintColor = color
+        }
     }
 }

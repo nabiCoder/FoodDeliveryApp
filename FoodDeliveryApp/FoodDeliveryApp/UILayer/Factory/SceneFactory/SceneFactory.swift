@@ -53,7 +53,7 @@ struct SceneFactory {
     // MARK: - Password Reset
     static func makePasswordResetScene(coordinator: AuthCoordinator) -> PasswordResetViewController {
         let passwordResetViewModel = PasswordResetViewModel(authCoordinator: coordinator)
-        let passwordResetViewController = PasswordResetViewController(passwordResetViewOutput: passwordResetViewModel)
+        let passwordResetViewController = PasswordResetViewController(viewModel: passwordResetViewModel)
         
         return passwordResetViewController
     }

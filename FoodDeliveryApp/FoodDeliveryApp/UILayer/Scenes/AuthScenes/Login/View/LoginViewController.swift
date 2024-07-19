@@ -20,10 +20,10 @@ class LoginViewController: KeyboardDismissViewController {
     private let socialButtonsStackView = UIStackView()
     private let loaderView = FDLoaderView()
     // MARK: - Properties
-    private var viewModel: MyViewModelType
+    private var viewModel: LoginViewModelType
     private let disposeBag = DisposeBag()
     // MARK: - Init
-    init(viewModel: MyViewModelType) {
+    init(viewModel: LoginViewModelType) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -273,7 +273,6 @@ private extension LoginViewController {
 }
 // MARK: - RxSwift
 private extension LoginViewController {
-    
     func rxBindings() {
         inputBindings()
         outputBindings()

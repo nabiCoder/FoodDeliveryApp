@@ -3,6 +3,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var coordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, 
                willConnectTo session: UISceneSession,
@@ -16,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.makeKeyAndVisible()
         let appCoordinator = AppCoordinator(type: .app,
                                             navigationController: navigationController)
+        self.coordinator = appCoordinator
         appCoordinator.start()
     }
 }

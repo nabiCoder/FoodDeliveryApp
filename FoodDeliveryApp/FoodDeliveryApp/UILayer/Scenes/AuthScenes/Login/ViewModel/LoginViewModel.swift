@@ -21,12 +21,12 @@ protocol LoginViewInput: AnyObject {
     func newAccountButtonTapped()
 }
 
-protocol MyViewModelType {
+protocol LoginViewModelType {
     var inputs: LoginViewInput { get }
     var outputs: LoginViewOutput { get }
 }
 
-class LoginViewModel: LoginViewInput, LoginViewOutput, MyViewModelType {
+class LoginViewModel: LoginViewInput, LoginViewOutput, LoginViewModelType {
     
     // MARK: - Propertys
     weak var authCoordinator: AuthCoordinator?
@@ -112,7 +112,7 @@ class LoginViewModel: LoginViewInput, LoginViewOutput, MyViewModelType {
     }
     
     var passwordVisibilityChanged = RxSwift.PublishSubject<Void>()
-    // MARK: - MyViewModelType
+    // MARK: - LoginViewModelType
     var inputs: LoginViewInput { return self }
     var outputs: LoginViewOutput { return self }
 }

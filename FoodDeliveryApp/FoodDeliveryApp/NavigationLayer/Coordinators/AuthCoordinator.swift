@@ -20,6 +20,10 @@ class AuthCoordinator: BaseCoordinator {
     func goToCreateAccount() {
         showCreateAccount()
     }
+    
+    func goToPasswordResetSuccess(email: String) {
+        showPasswordResetSuccess(email: email)
+    }
 }
 private extension AuthCoordinator {
     func showLogin() {

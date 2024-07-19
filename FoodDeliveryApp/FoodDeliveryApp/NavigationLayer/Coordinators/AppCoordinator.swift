@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 class AppCoordinator: BaseCoordinator {
     
@@ -48,11 +49,11 @@ extension AppCoordinator: CoordinatorFinishDelegate {
         
         switch childCoordinator.type {
         case .onboarding:
-            navigationController?.viewControllers.removeAll()
             showAuthFlow()
+            navigationController?.viewControllers = [navigationController?.viewControllers.last ?? UIViewController()]
         case .authorization:
-            navigationController?.viewControllers.removeAll()
             showMainFlow()
+            navigationController?.viewControllers = [navigationController?.viewControllers.last ?? UIViewController()]
         case .app:
             return
         default:
