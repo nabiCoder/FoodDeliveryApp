@@ -46,7 +46,7 @@ struct SceneFactory {
     // MARK: - Create Account
     static func makeCreateAccountScene(coordinator: AuthCoordinator) -> CreateAccountViewController {
         let createAccountViewModel = CreateAccountViewModel(authCoordinator: coordinator)
-        let createAccountViewController = CreateAccountViewController(createAccountViewOutput: createAccountViewModel)
+        let createAccountViewController = CreateAccountViewController(viewModel: createAccountViewModel)
         
         return createAccountViewController
     }

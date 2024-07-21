@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class CreateAccountViewController: KeyboardDismissViewController {
     // MARK: - Views
@@ -16,25 +18,25 @@ class CreateAccountViewController: KeyboardDismissViewController {
     private let facebookButton = FDSocialButton(type: .facebook)
     private let googleButton = FDSocialButton(type: .google)
     private let socialButtonsStackView = UIStackView()
+    private let loaderView = FDLoaderView()
     // MARK: - Properties
-    private var createAccountViewOutput: CreateAccountViewOutput?
+    private var viewModel: CreateAccountViewModelType
+    private let disposeBag = DisposeBag()
     // MARK: - Init
-    init(createAccountViewOutput: CreateAccountViewOutput) {
+    init(viewModel: CreateAccountViewModelType) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.createAccountViewOutput = createAccountViewOutput
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        stopKeyboardListener()
-    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        rxBindings()
     }
     // MARK: - @objc
     @objc private func backLoginButtonPressed() {
@@ -70,6 +72,7 @@ private extension CreateAccountViewController {
         setupFacebookButton()
         setupGoogleButton()
         setupSocialButtonsStackView()
+        setupLoaderView()
     }
     
     func setupView() {
@@ -254,4 +257,136 @@ private extension CreateAccountViewController {
         socialButtonsStackView.addArrangedSubview(facebookButton)
         socialButtonsStackView.addArrangedSubview(googleButton)
     }
+    
+    func setupLoaderView() {
+        view.addSubview(loaderView)
+        
+        loaderView.translatesAutoresizingMaskIntoConstraints = false
+        loaderView.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            loaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            loaderView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+    }
 }
+// MARK: - RxSwift
+private extension CreateAccountViewController {
+    
+        func rxBindings() {
+            inputBindings()
+            outputBindings()
+        }
+        
+        func inputBindings() {
+            nameSignUpTextField.textField.rx.text.orEmpty.bind(to: viewModel.inputs.fullNameText).disposed(by: disposeBag)
+            emailSignUpTextField.textField.rx.text.orEmpty.bind(to: viewModel.inputs.emailText).disposed(by: disposeBag)
+            passwordSignUpTextField.textField.rx.text.orEmpty.bind(to: viewModel.inputs.passwordText).disposed(by: disposeBag)
+            
+            signUpButton.button.rx.tap.bind { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.inputs.signUpButtonTapped()
+            }.disposed(by: disposeBag)
+            
+            passwordSignUpTextField.passwordVisibilityButton.rx.tap.bind { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.inputs.updatePasswordVisibility()
+            }.disposed(by: disposeBag)
+        }
+        
+        func outputBindings() {
+            viewModel.outputs.isValidName
+                .subscribe(onNext:  { [weak self] isValid in
+                    guard let self = self else { return }
+                    let targetColor: UIColor = isValid ? AppColors.accentOrangeColor : AppColors.badyTextGreyColor
+                    self.animateColorChange(of: self.nameSignUpTextField.checkmarkImage, to: targetColor)
+                })
+                .disposed(by: disposeBag)
+            
+            viewModel.outputs.isValidEmail
+                .subscribe(onNext:  { [weak self] isValid in
+                    guard let self = self else { return }
+                    let targetColor: UIColor = isValid ? AppColors.accentOrangeColor : AppColors.badyTextGreyColor
+                    self.animateColorChange(of: self.emailSignUpTextField.checkmarkImage, to: targetColor)
+                })
+                .disposed(by: disposeBag)
+            
+            
+            viewModel.outputs.passwordVisibilityChanged
+                .subscribe(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.animatePasswordVisibilityChange()
+                })
+                .disposed(by: disposeBag)
+            
+            viewModel.outputs.startLoader
+                .subscribe(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.animateLoader(start: true)
+                })
+                .disposed(by: disposeBag)
+            
+            viewModel.outputs.stopLoader
+                .subscribe(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.animateLoader(start: false)
+                })
+                .disposed(by: disposeBag)
+            
+            viewModel.outputs.shakeFullNameTextField
+                .subscribe(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.nameSignUpTextField.textField.shakeWithColorChange()
+                })
+                .disposed(by: disposeBag)
+            
+            viewModel.outputs.shakeEmailTextField
+                .subscribe(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.emailSignUpTextField.textField.shakeWithColorChange()
+                })
+                .disposed(by: disposeBag)
+            
+            viewModel.outputs.shakePasswordTextField
+                .subscribe(onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self.passwordSignUpTextField.textField.shakeWithColorChange()
+                })
+                .disposed(by: disposeBag)
+        }
+    }
+    // MARK: - Animating Methods
+    private extension CreateAccountViewController {
+        func animateColorChange(of view: UIView, to color: UIColor) {
+            UIView.animate(withDuration: 0.3) {
+                view.tintColor = color
+            }
+        }
+        
+        func animatePasswordVisibilityChange() {
+            UIView.transition(with: passwordSignUpTextField.textField,
+                              duration: 0.2,
+                              options: .transitionCrossDissolve) {
+                self.passwordSignUpTextField.textField.isSecureTextEntry.toggle()
+            }
+            
+            let newImage: UIImage = passwordSignUpTextField.textField.isSecureTextEntry ? .invisible : .visible
+            
+            UIView.transition(with: passwordSignUpTextField.passwordVisibilityButton,
+                              duration: 0.2,
+                              options: .transitionCrossDissolve) {
+                self.passwordSignUpTextField.passwordVisibilityButton.setImage(newImage, for: .normal)
+            }
+        }
+        
+        func animateLoader(start: Bool) {
+            UIView.animate(withDuration: 0.3) {
+                self.loaderView.isHidden = !start
+                if start {
+                    self.loaderView.startLoader()
+                } else {
+                    self.loaderView.stopLoader()
+                }
+            }
+        }
+    }

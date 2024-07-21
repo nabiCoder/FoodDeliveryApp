@@ -23,4 +23,10 @@ extension String {
         let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
         return emailPredicate.evaluate(with: self)
     }
+    
+    var isFullName: Bool {
+        let nameRegex = "^[A-Z][a-z]+\\s[A-Z][a-z]+$"
+        let namePredicate = NSPredicate(format: "SELF MATCHES %@", nameRegex)
+        return namePredicate.evaluate(with: self)
+    }
 }

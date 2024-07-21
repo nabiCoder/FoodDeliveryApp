@@ -56,24 +56,19 @@ class LoginViewModel: LoginViewInput, LoginViewOutput, LoginViewModelType {
     var passwordText = BehaviorRelay<String>(value: "")
     
     func signInButtonTapped() {
-        guard !emailText.value.isEmpty else {
+        
+        var validationFailed = false
+        if !emailText.value.isEmail {
             shakeEmailTextField.onNext(())
-            if passwordText.value.isEmpty {
-                shakePasswordTextField.onNext(())
-            }
-            return
+            validationFailed = true
         }
         
-        guard emailText.value.isEmail else {
-            shakeEmailTextField.onNext(())
-            if passwordText.value.isEmpty {
-                shakePasswordTextField.onNext(())
-            }
-            return
-        }
-        
-        guard !passwordText.value.isEmpty else {
+        if passwordText.value.isEmpty {
             shakePasswordTextField.onNext(())
+            validationFailed = true
+        }
+        
+        if validationFailed {
             return
         }
         

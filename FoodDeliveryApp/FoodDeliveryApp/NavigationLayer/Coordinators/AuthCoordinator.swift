@@ -24,6 +24,10 @@ class AuthCoordinator: BaseCoordinator {
     func goToPasswordResetSuccess(email: String) {
         showPasswordResetSuccess(email: email)
     }
+    
+    func goToEnterNumber() {
+        showEnterNumber()
+    }
 }
 private extension AuthCoordinator {
     func showLogin() {
