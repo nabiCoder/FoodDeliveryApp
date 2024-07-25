@@ -323,14 +323,14 @@ private extension LoginViewController {
         viewModel.outputs.startLoader
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.animateLoader(start: true)
+                self.loaderView.animateLoader(start: true)
             })
             .disposed(by: disposeBag)
         
         viewModel.outputs.stopLoader
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.animateLoader(start: false)
+                self.loaderView.animateLoader(start: false)
             })
             .disposed(by: disposeBag)
         
@@ -370,17 +370,6 @@ private extension LoginViewController {
                           duration: 0.2,
                           options: .transitionCrossDissolve) {
             self.passwordLoginTextField.passwordVisibilityButton.setImage(newImage, for: .normal)
-        }
-    }
-    
-    func animateLoader(start: Bool) {
-        UIView.animate(withDuration: 0.3) {
-            self.loaderView.isHidden = !start
-            if start {
-                self.loaderView.startLoader()
-            } else {
-                self.loaderView.stopLoader()
-            }
         }
     }
 }

@@ -15,7 +15,7 @@ class PopUpCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(with countryInfo: CountryCodes) {
+    func configure(with countryInfo: CountryCode) {
         let imageName = countryInfo.code
         self.flagImageView.image = UIImage(named: imageName)
         self.countryLabel.text = countryInfo.name

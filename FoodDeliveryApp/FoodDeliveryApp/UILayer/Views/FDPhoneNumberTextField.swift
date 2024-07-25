@@ -10,13 +10,13 @@ class FDPhoneNumberTextField: UIView {
     // MARK: - Properties
     private lazy var fieldLabel = UILabel()
     private lazy var flagImage = UIImageView()
-    private lazy var selectCountryButton = UIButton()
-    private lazy var textField = UITextField()
+    lazy var selectCountryButton = UIButton()
+    lazy var textField = UITextField()
     private lazy var textFieldShadow = UIView()
     
     private var flagType: FlagType
-    private let countryCode = "+7"
-    private let maxCharacters = 16
+    private let maxCharacters = 17
+    private var isRotated = false
     
     var action: (() -> Void)?
     
@@ -39,6 +39,28 @@ class FDPhoneNumberTextField: UIView {
     @objc private func buttonPressed() {
         guard let action = self.action else { return }
         action()
+    }
+    
+    func rotateButtonImage() {
+        let angle: CGFloat = isRotated ? 0 : .pi
+        UIView.animate(withDuration: 0.3, animations: {
+            self.selectCountryButton.imageView?.transform = CGAffineTransform(rotationAngle: angle)
+        })
+        isRotated.toggle()
+    }
+    
+    func changeFlagImage(imageName: String) {
+        guard let newImage = UIImage(named: imageName) else { return }
+        
+        flagImage.animateTransition {
+            self.flagImage.image = newImage
+        }
+    }
+    
+    func changeCountryCode(code: String) {
+        textField.animateTransition {
+            self.textField.text = code
+        }
     }
 }
 // MARK: - Extensions, setupLayout
@@ -104,8 +126,8 @@ private extension FDPhoneNumberTextField {
         
         selectCountryButton.translatesAutoresizingMaskIntoConstraints = false
         selectCountryButton.addTarget(self,
-                                       action: #selector(buttonPressed),
-                                       for: .touchUpInside)
+                                      action: #selector(buttonPressed),
+                                      for: .touchUpInside)
         selectCountryButton.setImage(.path, for: .normal)
         
         NSLayoutConstraint.activate([
@@ -150,17 +172,9 @@ extension FDPhoneNumberTextField: UITextFieldDelegate {
     func textField(_ textField: UITextField,
                    shouldChangeCharactersIn range: NSRange,
                    replacementString string: String) -> Bool {
-        guard let text = textField.text else { return false }
-
-        guard let stringRange = Range(range, in: text) else { return false }
-                
-        let updatedText = text.replacingCharacters(in: stringRange, with: string)
+        guard let currentText = textField.text else { return false }
         
-        if updatedText.count < countryCode.count { return false }
-        if updatedText.count > maxCharacters { return false }
-        
-        textField.text = text.applyPatternOnNumbers(pattern: "+#(###) ###-####", replacementCharacter: "#")
-        
-        return true
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: string)
+        return updatedText.count <= maxCharacters
     }
 }

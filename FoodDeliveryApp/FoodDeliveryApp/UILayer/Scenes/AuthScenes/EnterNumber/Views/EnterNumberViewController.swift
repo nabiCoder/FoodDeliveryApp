@@ -1,4 +1,6 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class EnterNumberViewController: KeyboardDismissViewController {
     // MARK: - Views
@@ -7,41 +9,53 @@ class EnterNumberViewController: KeyboardDismissViewController {
     private let subLabel = UILabel()
     private let phoneNumberTextField = FDPhoneNumberTextField(flagType: .usa)
     private let signUpButton = FDButton(titleType: .signUp)
+    private let popUp = PopUpView()
+    private let loaderView = FDLoaderView()
     // MARK: - Properties
-    private let popUp = PopUpView(data: [CountryCodes(name: "Russia", dialCode: "+7", code: "RU"),
-                                         CountryCodes(name: "USA", dialCode: "+1", code: "US"),
-                                         CountryCodes(name: "Kazakhstan", dialCode: "+76", code: "KZ")])
-    private var enterNumberViewOutput: EnterNumberViewOutput?
+    private var viewModel: EnterNumberViewModelType
     private var isKeyboardShow = false
+    private let disposeBag = DisposeBag()
     // MARK: - Constraints
     private var bottomCTValue: CGFloat = 0.0
     private var signUpButtonButtonCT = NSLayoutConstraint()
     // MARK: - Init
-    init(enterNumberViewOutput: EnterNumberViewOutput) {
+    init(viewModel: EnterNumberViewModelType) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        self.enterNumberViewOutput = enterNumberViewOutput
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    deinit {
-        stopKeyboardListener()
-    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupLayout()
         setupListener()
+        rxBindings()
     }
-    // MARK: - @objc
-    @objc private func signUpButtonPressed() {
+    
+    override func handleTap(_ sender: UITapGestureRecognizer) {
+        super.handleTap(sender)
+        let tapLocation = sender.location(in: view)
         
+        let isTapOutsidePhoneNumberTextField = !phoneNumberTextField.frame.contains(tapLocation)
+        let isTapOutsidePopUp = !popUp.frame.contains(tapLocation)
+        
+        if isTapOutsidePhoneNumberTextField && isTapOutsidePopUp {
+            dismissPopUp()
+        }
     }
-    @objc private func popUpButtonPressed() {
-        popUp.toggleVisibility(withDuration: 0.4)
+    
+    
+    private func dismissPopUp() {
+        if !popUp.isHidden {
+            phoneNumberTextField.rotateButtonImage()
+            self.popUp.animateTransition {
+                self.popUp.isHidden = true
+            }
+        }
     }
 }
 // MARK: - Extension methods
@@ -54,6 +68,7 @@ private extension EnterNumberViewController {
         setupPhoneNumberTextField()
         setupSignUpButton()
         setupPopUpView()
+        setupLoaderView()
     }
     
     func setupView() {
@@ -103,7 +118,6 @@ private extension EnterNumberViewController {
         view.addSubview(phoneNumberTextField)
         
         phoneNumberTextField.translatesAutoresizingMaskIntoConstraints = false
-        phoneNumberTextField.action = popUpButtonPressed
         
         NSLayoutConstraint.activate([
             phoneNumberTextField.topAnchor.constraint(equalTo: subLabel.bottomAnchor,
@@ -118,7 +132,6 @@ private extension EnterNumberViewController {
         view.addSubview(signUpButton)
         
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.action = signUpButtonPressed
         bottomCTValue = -30
         signUpButtonButtonCT = signUpButton.bottomAnchor.constraint(equalTo: view.bottomAnchor,
                                                                     constant: bottomCTValue)
@@ -144,26 +157,38 @@ private extension EnterNumberViewController {
             popUp.heightAnchor.constraint(equalToConstant: 120)
         ])
     }
+    
+    func setupLoaderView() {
+        view.addSubview(loaderView)
+        
+        loaderView.translatesAutoresizingMaskIntoConstraints = false
+        loaderView.isHidden = true
+        
+        NSLayoutConstraint.activate([
+            loaderView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            loaderView.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+    }
 }
 // MARK: - Keyboard Listener
 private extension EnterNumberViewController {
     func setupListener() {
         startKeyboardListener()
     }
-
+    
     func startKeyboardListener() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)),
                                                name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)),
                                                name: UIResponder.keyboardWillHideNotification, object: nil)
     }
-
+    
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         else { return }
-
+        
         let keyboardHeight = keyboardFrame.cgRectValue.height
-
+        
         if !isKeyboardShow {
             UIView.animate(withDuration: 0.3) {
                 self.signUpButtonButtonCT.constant -= keyboardHeight
@@ -172,7 +197,7 @@ private extension EnterNumberViewController {
             }
         }
     }
-
+    
     @objc func keyboardWillHide(_ notification: Notification) {
         if isKeyboardShow {
             UIView.animate(withDuration: 0.3) {
@@ -183,3 +208,74 @@ private extension EnterNumberViewController {
         }
     }
 }
+// MARK: - RxSwift
+private extension EnterNumberViewController {
+    func rxBindings() {
+        bindTableView()
+        inputBindings()
+        outputBindings()
+    }
+    
+    func bindTableView() {
+        viewModel.outputs.countries
+            .bind(to: popUp.tableView.rx.items(cellIdentifier: PopUpCell.identifier,
+                                               cellType: PopUpCell.self)) { row, item, cell in
+                cell.configure(with: item)
+            }
+                                               .disposed(by: disposeBag)
+        
+        popUp.tableView.rx.modelSelected(CountryCode.self)
+            .bind(to: viewModel.inputs.selectedCountry)
+            .disposed(by: disposeBag)
+        
+        viewModel.inputs.selectedCountry
+            .subscribe(onNext: { [weak self] item in
+                guard let self = self else { return }
+                self.dismissPopUp()
+                self.phoneNumberTextField.changeFlagImage(imageName: item.code)
+                self.phoneNumberTextField.changeCountryCode(code: item.dialCode)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    func inputBindings() {
+        phoneNumberTextField.textField.rx.text
+            .orEmpty
+            .bind(to: viewModel.inputs.phoneNumberText)
+            .disposed(by: disposeBag)
+        
+        signUpButton.button.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.signUpButtonTapped()
+        }.disposed(by: disposeBag)
+        
+        phoneNumberTextField.selectCountryButton.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.selectCountryButtonTapped()
+        }.disposed(by: disposeBag)
+    }
+    
+    func outputBindings() {
+        viewModel.outputs.selectCountryButtonTap
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.phoneNumberTextField.rotateButtonImage()
+                self.popUp.animateTransition {
+                    self.popUp.isHidden.toggle()
+                }
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.shakePhoneNumberTextField
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.phoneNumberTextField.textField.shakeWithColorChange()
+            })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.formattedPhoneNumber
+            .bind(to: phoneNumberTextField.textField.rx.text)
+            .disposed(by: disposeBag)
+    }
+}
+

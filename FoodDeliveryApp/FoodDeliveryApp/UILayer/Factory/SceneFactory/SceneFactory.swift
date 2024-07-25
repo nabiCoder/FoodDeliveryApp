@@ -67,9 +67,14 @@ struct SceneFactory {
         return passwordResetSuccessVC
     }
     // MARK: - Enter Number
+    
+    
     static func makeEnterNumberScene(coordinator: AuthCoordinator) -> EnterNumberViewController {
-        let enterNumberViewModel = EnterNumberViewModel(authCoordinator: coordinator)
-        let enterNumberViewController = EnterNumberViewController(enterNumberViewOutput: enterNumberViewModel)
+        let countryCodeArray = [CountryCode(name: "Russia", dialCode: "+7", code: "RU"),
+                                CountryCode(name: "USA", dialCode: "+1", code: "US"),
+                                CountryCode(name: "Kazakhstan", dialCode: "+76", code: "KZ")]
+        let enterNumberViewModel = EnterNumberViewModel(authCoordinator: coordinator, countries: countryCodeArray)
+        let enterNumberViewController = EnterNumberViewController(viewModel: enterNumberViewModel)
         
         return enterNumberViewController
     }

@@ -13,12 +13,15 @@ class FDLoaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func startLoader() {
-        loader.startAnimating()
-    }
-    
-    func stopLoader() {
-        loader.stopAnimating()
+    func animateLoader(start: Bool) {
+        UIView.animate(withDuration: 0.3) {
+            self.isHidden = !start
+            if start {
+                self.loader.startAnimating()
+            } else {
+                self.loader.stopAnimating()
+            }
+        }
     }
 }
     // MARK: - Extensions, private methods

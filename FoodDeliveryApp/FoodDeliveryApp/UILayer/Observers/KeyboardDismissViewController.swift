@@ -1,6 +1,6 @@
 import UIKit
 
-class KeyboardDismissViewController: UIViewController {
+class KeyboardDismissViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +17,8 @@ class KeyboardDismissViewController: UIViewController {
     
     private func startKeyboardListener() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        tapGesture.cancelsTouchesInView = false
+        tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -26,5 +28,12 @@ class KeyboardDismissViewController: UIViewController {
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
+    }
+    // MARK: - Delegate methods
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = touch.view, view is UIButton {
+            return false
+        }
+        return true
     }
 }

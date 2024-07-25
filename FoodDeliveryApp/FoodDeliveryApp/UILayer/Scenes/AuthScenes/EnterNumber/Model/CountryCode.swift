@@ -1,6 +1,6 @@
 import Foundation
 
-struct CountryCodes {
+struct CountryCode {
     let name: String
     let dialCode: String
     let code: String

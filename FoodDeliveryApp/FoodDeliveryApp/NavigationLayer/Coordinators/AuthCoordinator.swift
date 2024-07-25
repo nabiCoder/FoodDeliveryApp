@@ -28,6 +28,10 @@ class AuthCoordinator: BaseCoordinator {
     func goToEnterNumber() {
         showEnterNumber()
     }
+    
+    func goToVerifyNumber() {
+        showVerifyNumber()
+    }
 }
 private extension AuthCoordinator {
     func showLogin() {

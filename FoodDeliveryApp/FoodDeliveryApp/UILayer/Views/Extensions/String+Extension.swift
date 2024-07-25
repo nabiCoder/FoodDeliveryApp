@@ -1,21 +1,20 @@
 import Foundation.NSString
 
 extension String {
-    func applyPatternOnNumbers(pattern: String, replacementCharacter: Character) -> String {
-        let pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
-        var formattedString = ""
-        var pureNumberIndex = pureNumber.startIndex
+    func formatPhoneNumber(withMask mask: String) -> String {
+        let numbers = self.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        var result = ""
+        var index = numbers.startIndex
         
-        for patternCharacter in pattern where pureNumberIndex < pureNumber.endIndex {
-            print(patternCharacter)
-            if patternCharacter == replacementCharacter {
-                formattedString.append(pureNumber[pureNumberIndex])
-                pureNumberIndex = pureNumber.index(after: pureNumberIndex)
+        for ch in mask where index < numbers.endIndex {
+            if ch == "X" {
+                result.append(numbers[index])
+                index = numbers.index(after: index)
             } else {
-                formattedString.append(patternCharacter)
+                result.append(ch)
             }
         }
-        return formattedString
+        return "+" + result
     }
     
     var isEmail: Bool {
@@ -28,5 +27,11 @@ extension String {
         let nameRegex = "^[A-Z][a-z]+\\s[A-Z][a-z]+$"
         let namePredicate = NSPredicate(format: "SELF MATCHES %@", nameRegex)
         return namePredicate.evaluate(with: self)
+    }
+    
+    var isPhoneNumber: Bool {
+        let phoneRegex = "^\\+\\d{1,3} \\(\\d{3}\\) \\d{3}-\\d{4}$"
+        let phonePredicate = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phonePredicate.evaluate(with: self)
     }
 }
