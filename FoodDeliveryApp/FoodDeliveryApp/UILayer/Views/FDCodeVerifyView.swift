@@ -19,6 +19,13 @@ class FDCodeVerifyView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setCode(_ code: String) {
+        let characters = Array(code)
+        for (index, textField) in codeTextFields.enumerated() {
+            textField.text = index < characters.count ? String(characters[index]) : ""
+        }
+    }
 }
 // MARK: - Extensions, private methods
 private extension FDCodeVerifyView {

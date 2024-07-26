@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import UserNotifications
 
 protocol EnterNumberViewOutput: AnyObject {
     var shakePhoneNumberTextField: PublishSubject<Void> { get }
@@ -46,7 +47,36 @@ class EnterNumberViewModel: EnterNumberViewModelType, EnterNumberViewInput, Ente
         }
         
         authCoordinator?.goToVerifyNumber()
+        scheduleNotification()
     }
+    
+    
+    
+    func scheduleNotification() {
+        // Создаем код из 4 цифр
+        let code = String(format: "%04d", Int.random(in: 0...9999))
+        
+        // Создаем контент уведомления
+        let content = UNMutableNotificationContent()
+        content.title = "Verification Code"
+        content.body = "Your verification code is \(code)"
+        content.sound = .default
+        
+        // Настраиваем триггер на 15 секунд
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        // Создаем запрос на уведомление
+        let request = UNNotificationRequest(identifier: "VerificationCode", content: content, trigger: trigger)
+        
+        // Добавляем уведомление в центр уведомлений
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Error adding notification: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    
     // MARK: - EnterNumberViewOutput
     var shakePhoneNumberTextField = PublishSubject<Void>()
     var selectCountryButtonTap = PublishSubject<Void>()

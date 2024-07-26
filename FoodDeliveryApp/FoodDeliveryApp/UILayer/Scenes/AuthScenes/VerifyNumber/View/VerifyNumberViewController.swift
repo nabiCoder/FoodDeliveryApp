@@ -26,6 +26,11 @@ class VerifyNumberViewController: KeyboardDismissViewController {
         super.viewDidLoad()
         setupLayout()
     }
+    
+    func insertCodeIntoTextField(_ code: String) {
+        verifyTextField.setCode(code)
+    }
+      
     // MARK: - @objc
     @objc private func continueButtonPressed() {
         print("continueButtonPressed")
