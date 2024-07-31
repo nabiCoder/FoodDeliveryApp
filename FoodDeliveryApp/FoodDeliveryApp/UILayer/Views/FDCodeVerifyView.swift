@@ -7,7 +7,7 @@ protocol VerifyProtocol: AnyObject {
 class FDCodeVerifyView: UIView {
     // MARK: - Views
     private let codeStackView  = UIStackView()
-    private var codeTextFields = [FDCodeVerifyTextField]()
+    var codeTextFields = [FDCodeVerifyTextField]()
     
     weak var verifyDelegate: VerifyProtocol?
     // MARK: - Init
@@ -20,11 +20,8 @@ class FDCodeVerifyView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setCode(_ code: String) {
-        let characters = Array(code)
-        for (index, textField) in codeTextFields.enumerated() {
-            textField.text = index < characters.count ? String(characters[index]) : ""
-        }
+    deinit {
+        codeTextFields.removeAll()
     }
 }
 // MARK: - Extensions, private methods
@@ -32,7 +29,7 @@ private extension FDCodeVerifyView {
     func setupLayout() {
         codeTextFieldConfiguration()
     }
-    
+
     func codeTextFieldConfiguration() {
         addSubview(codeStackView)
         

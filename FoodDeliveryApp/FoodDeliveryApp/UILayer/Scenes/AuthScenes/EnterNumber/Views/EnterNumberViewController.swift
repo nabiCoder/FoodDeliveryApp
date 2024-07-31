@@ -4,7 +4,7 @@ import RxCocoa
 
 class EnterNumberViewController: KeyboardDismissViewController {
     // MARK: - Views
-    private let navigationTitle = "Forgot Password"
+    private let navigationTitle = "Login to Tamang Food Services"
     private let mainLabel = UILabel()
     private let subLabel = UILabel()
     private let phoneNumberTextField = FDPhoneNumberTextField(flagType: .usa)
@@ -34,6 +34,7 @@ class EnterNumberViewController: KeyboardDismissViewController {
         setupLayout()
         setupListener()
         rxBindings()
+        setupNavBar()
     }
     
     override func handleTap(_ sender: UITapGestureRecognizer) {
@@ -47,7 +48,6 @@ class EnterNumberViewController: KeyboardDismissViewController {
             dismissPopUp()
         }
     }
-    
     
     private func dismissPopUp() {
         if !popUp.isHidden {
@@ -76,7 +76,7 @@ private extension EnterNumberViewController {
     }
     
     func setupNavigationController() {
-        navigationController?.title = navigationTitle
+        title = navigationTitle
     }
     
     func setupMainLabel() {

@@ -3,13 +3,15 @@ import Foundation
 class AuthCoordinator: BaseCoordinator {
     
     private let faktory = SceneFactory.self
+    private let userStorage = UserStorage.shared
     
     override func start() {
-       showLogin()
+        showLogin()
     }
     
     override func finish() {
         print("AuthCoordinator finish")
+        userStorage.passedAuth = true
         finishDelegate?.coordinatorDidFinish(childCoordinator: self)
     }
     
@@ -29,8 +31,8 @@ class AuthCoordinator: BaseCoordinator {
         showEnterNumber()
     }
     
-    func goToVerifyNumber() {
-        showVerifyNumber()
+    func goToVerifyNumber(phoneNumber: String) {
+        showVerifyNumber(phoneNumber: phoneNumber)
     }
 }
 private extension AuthCoordinator {
@@ -59,8 +61,8 @@ private extension AuthCoordinator {
         navigationController?.pushViewController(loginViewController, animated: true)
     }
     
-    func showVerifyNumber() {
-        let loginViewController = faktory.makeVerifyNumberScene(coordinator: self)
+    func showVerifyNumber(phoneNumber: String) {
+        let loginViewController = faktory.makeVerifyNumberScene(coordinator: self, phoneNumber: phoneNumber)
         navigationController?.pushViewController(loginViewController, animated: true)
     }
 }

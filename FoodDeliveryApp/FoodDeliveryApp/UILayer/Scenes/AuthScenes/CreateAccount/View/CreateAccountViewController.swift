@@ -4,7 +4,7 @@ import RxCocoa
 
 class CreateAccountViewController: KeyboardDismissViewController {
     // MARK: - Views
-    private let navigationSignUpTitle = "Sign Up"
+    private let navigationSignUpTitle = "Forgot Password"
     private let mainSignUpLabel = UILabel()
     private let subSignUpLabel = UILabel()
     private let backLoginButton = UIButton()
@@ -37,6 +37,7 @@ class CreateAccountViewController: KeyboardDismissViewController {
         super.viewDidLoad()
         setupLayout()
         rxBindings()
+        setupNavBar()
     }
     // MARK: - @objc
     @objc private func backLoginButtonPressed() {
@@ -80,7 +81,7 @@ private extension CreateAccountViewController {
     }
     
     func setupNavigationController() {
-        navigationController?.title = navigationSignUpTitle
+        title = navigationSignUpTitle
     }
     
     func setupMainLoginLabel() {
@@ -153,7 +154,7 @@ private extension CreateAccountViewController {
     func setupPasswordLoginTextField() {
         view.addSubview(passwordSignUpTextField)
         
-        passwordSignUpTextField.action = passwordButtonPressed
+        //passwordSignUpTextField.action = passwordButtonPressed
         passwordSignUpTextField.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -181,7 +182,7 @@ private extension CreateAccountViewController {
         view.addSubview(signUpButton)
         
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.action = signUpButtonPressed
+        //signUpButton.action = signUpButtonPressed
         
         NSLayoutConstraint.activate([
             signUpButton.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 24),
@@ -229,14 +230,14 @@ private extension CreateAccountViewController {
         view.addSubview(facebookButton)
         
         facebookButton.translatesAutoresizingMaskIntoConstraints = false
-        facebookButton.action = facebookButtonPressed
+        //facebookButton.action = facebookButtonPressed
     }
     
     func setupGoogleButton() {
         view.addSubview(googleButton)
         
         googleButton.translatesAutoresizingMaskIntoConstraints = false
-        googleButton.action = googleButtonPressed
+        //googleButton.action = googleButtonPressed
     }
     
     func setupSocialButtonsStackView() {

@@ -23,6 +23,7 @@ class PasswordResetSuccessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        setupNavBar()
     }
     // MARK: - @objc
     @objc private func sendAgainButtonTapped() {
@@ -45,7 +46,7 @@ private extension PasswordResetSuccessViewController {
     }
     
     func setupNavigationController() {
-        navigationController?.title = navigationTitle
+        title = navigationTitle
     }
     
     func setupMainLabel() {

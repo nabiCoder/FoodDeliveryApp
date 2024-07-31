@@ -63,6 +63,7 @@
 		39CD767E2C3310370088C013 /* PasswordResetSuccessViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD767D2C3310370088C013 /* PasswordResetSuccessViewModel.swift */; };
 		39CD76802C3314900088C013 /* EnterNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD767F2C3314900088C013 /* EnterNumberViewModel.swift */; };
 		39CD76822C3315770088C013 /* VerifyNumberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39CD76812C3315770088C013 /* VerifyNumberViewModel.swift */; };
+		39DEA3342C5A520100D9DFC8 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39DEA3332C5A520100D9DFC8 /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +117,7 @@
 		39CD767D2C3310370088C013 /* PasswordResetSuccessViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetSuccessViewModel.swift; sourceTree = "<group>"; };
 		39CD767F2C3314900088C013 /* EnterNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterNumberViewModel.swift; sourceTree = "<group>"; };
 		39CD76812C3315770088C013 /* VerifyNumberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyNumberViewModel.swift; sourceTree = "<group>"; };
+		39DEA3332C5A520100D9DFC8 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -287,6 +289,7 @@
 				394BB1E32C147A1F007D2B75 /* String+Extension.swift */,
 				394BB1E52C147B14007D2B75 /* UIView+Extension.swift */,
 				39713C5F2C454DDC007F04BF /* UITextField+Extension.swift */,
+				39DEA3332C5A520100D9DFC8 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -650,6 +653,7 @@
 				3943B7392C1F42CC0078F349 /* FDCodeVerifyTextField.swift in Sources */,
 				392C132C2BEFFEFD00DBD790 /* OnboardingCoordinator.swift in Sources */,
 				392C13312BF0DA1600DBD790 /* SearchCoordinator.swift in Sources */,
+				39DEA3342C5A520100D9DFC8 /* UIViewController+Extension.swift in Sources */,
 				39CD767C2C330F670088C013 /* PasswordResetViewModel.swift in Sources */,
 				3943B7372C1F06A70078F349 /* VerifyNumberViewController.swift in Sources */,
 				392C133C2BF0F6A700DBD790 /* OnboardingViewModel.swift in Sources */,

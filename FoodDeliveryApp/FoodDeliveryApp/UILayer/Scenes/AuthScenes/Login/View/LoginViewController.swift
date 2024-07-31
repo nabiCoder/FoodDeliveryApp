@@ -72,7 +72,7 @@ private extension LoginViewController {
     }
     
     func setupNavigationController() {
-        //navigationController?.title = navigationLoginTitle
+        title = navigationLoginTitle
     }
     
     func setupMainLoginLabel() {

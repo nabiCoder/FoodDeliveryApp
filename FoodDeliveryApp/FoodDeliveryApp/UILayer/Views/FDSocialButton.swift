@@ -22,6 +22,7 @@ class FDSocialButton: UIView {
     }
     // MARK: - Action
     @objc private func buttonPressed() {
+        animateButtonPress()
         guard let action = self.action else { return }
         action()
     }

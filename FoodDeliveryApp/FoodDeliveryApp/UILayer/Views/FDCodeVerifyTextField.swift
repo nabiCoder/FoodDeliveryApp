@@ -21,6 +21,7 @@ class FDCodeVerifyTextField: UITextField {
     }
     
     override func deleteBackward() {
+        super.deleteBackward()
         fieldDelegate?.activePreviosField(tag: tag)
     }
 }
@@ -35,6 +36,7 @@ private extension FDCodeVerifyTextField {
         backgroundColor = AppColors.backgroundWhiteColor
         tintColor = AppColors.greenColor
         textAlignment = .center
+        keyboardType = .numberPad
         delegate = self
     }
     

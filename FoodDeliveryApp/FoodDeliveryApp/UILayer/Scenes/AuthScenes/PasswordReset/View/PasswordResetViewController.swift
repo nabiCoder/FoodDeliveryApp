@@ -26,6 +26,7 @@ class PasswordResetViewController: KeyboardDismissViewController {
         super.viewDidLoad()
         setupLayout()
         rxBindings()
+        setupNavBar()
     }
     // MARK: - @objc
     @objc private func resetPasswordButtonPressed() {
@@ -48,7 +49,7 @@ private extension PasswordResetViewController {
     }
     
     func setupNavigationController() {
-        navigationController?.title = navigationTitle
+        title = navigationTitle
     }
     
     func setupMainLabel() {

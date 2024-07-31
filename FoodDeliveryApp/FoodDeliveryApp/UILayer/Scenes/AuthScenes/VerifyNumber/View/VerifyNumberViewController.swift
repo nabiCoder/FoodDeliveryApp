@@ -1,9 +1,12 @@
 import UIKit
+import RxSwift
+import RxCocoa
 
 class VerifyNumberViewController: KeyboardDismissViewController {
     // MARK: - Views
     private let mainLabel = UILabel()
     private let subLabel = UILabel()
+    private let navigationTitle = "Login to Foodly"
     private let verifyTextField = FDCodeVerifyView()
     private let continueButton = FDButton(titleType: .continueTitle)
     private let instructionLabel = UILabel()
@@ -11,11 +14,14 @@ class VerifyNumberViewController: KeyboardDismissViewController {
     private let instructionButtonStackView = UIStackView()
     private let joinAgreementButton = UIButton()
     // MARK: - Properties
-    private var verifyNumberViewOutput: VerifyNumberViewOutput?
+    private var viewModel: VerifyNumberViewModelType
+    private let disposeBag = DisposeBag()
+    private var phoneNumber = String()
     // MARK: - Init
-    init(verifyNumberViewOutput: VerifyNumberViewOutput) {
+    init(viewModel: VerifyNumberViewModelType, phoneNumber: String) {
+        self.viewModel = viewModel
+        self.phoneNumber = phoneNumber
         super.init(nibName: nil, bundle: nil)
-        self.verifyNumberViewOutput = verifyNumberViewOutput
     }
     
     required init?(coder: NSCoder) {
@@ -25,16 +31,11 @@ class VerifyNumberViewController: KeyboardDismissViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLayout()
+        verifyTextField.verifyDelegate = self
+        rxBindings()
+        setupNavBar()
     }
-    
-    func insertCodeIntoTextField(_ code: String) {
-        verifyTextField.setCode(code)
-    }
-      
     // MARK: - @objc
-    @objc private func continueButtonPressed() {
-        print("continueButtonPressed")
-    }
     @objc private func resendButtonPressed() {
         print("resendButtonPressed")
     }
@@ -62,7 +63,7 @@ private extension VerifyNumberViewController {
     }
     
     func setupNavigationController() {
-//        navigationController?.title = navigationLoginTitle
+        title = navigationTitle
     }
     
     func setupMainLabel() {
@@ -86,7 +87,7 @@ private extension VerifyNumberViewController {
         view.addSubview(subLabel)
         
         subLabel.translatesAutoresizingMaskIntoConstraints = false
-        subLabel.text = "Enter the 4-Digit code sent to you at\n+610489632578"
+        subLabel.text = "Enter the 4-Digit code sent to you at\n\(phoneNumber)"
         subLabel.numberOfLines = 2
         subLabel.textAlignment = .center
         subLabel.font = UIFont(name: "AvenirNext-Regular", size: 16)
@@ -117,7 +118,6 @@ private extension VerifyNumberViewController {
         view.addSubview(continueButton)
         
         continueButton.translatesAutoresizingMaskIntoConstraints = false
-        continueButton.action = continueButtonPressed
         
         NSLayoutConstraint.activate([
             continueButton.topAnchor.constraint(equalTo: subLabel.bottomAnchor, constant: 125),
@@ -144,8 +144,8 @@ private extension VerifyNumberViewController {
         resendButton.setTitleColor(AppColors.accentOrangeColor, for: .normal)
         resendButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 12)
         resendButton.addTarget(self,
-                                   action: #selector(resendButtonPressed),
-                                   for: .touchUpInside)
+                               action: #selector(resendButtonPressed),
+                               for: .touchUpInside)
     }
     
     func setupInstructionButtonStackView() {
@@ -177,8 +177,8 @@ private extension VerifyNumberViewController {
         joinAgreementButton.setTitleColor(AppColors.badyTextGreyColor, for: .normal)
         joinAgreementButton.titleLabel?.font = UIFont(name: "AvenirNext-Regular", size: 16)
         joinAgreementButton.addTarget(self,
-                                   action: #selector(joinAgreementButtonPressed),
-                                   for: .touchUpInside)
+                                      action: #selector(joinAgreementButtonPressed),
+                                      for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             joinAgreementButton.topAnchor.constraint(equalTo: instructionButtonStackView.bottomAnchor, constant: 34),
@@ -190,6 +190,44 @@ private extension VerifyNumberViewController {
 }
 extension VerifyNumberViewController: VerifyProtocol {
     func verify() {
+        //viewModel.inputs.continueButtonTapped()
+        let combinedText = verifyTextField.codeTextFields.map { $0.text ?? "" }.joined()
+        // Обновляем verifyCode вручную перед вызовом handleContinueButtonTapped
+        viewModel.inputs.verifyCode.accept(combinedText)
+        // Вызываем действие продолжения
+        viewModel.inputs.continueButtonTapped()
+    }
+}
+
+private extension VerifyNumberViewController {
+    func rxBindings() {
+        inputBindings()
+        outputBindings()
+    }
+    
+    func inputBindings() {
+        let textFieldObservables = verifyTextField.codeTextFields.map({$0.rx.text.orEmpty.asObservable()})
         
+        Observable.combineLatest(textFieldObservables) { textValues in
+            textValues.joined()
+        }
+        .bind(to: viewModel.inputs.verifyCode)
+        .disposed(by: disposeBag)
+        
+        continueButton.button.rx.tap.bind { [weak self] in
+            guard let self = self else { return }
+            self.viewModel.inputs.continueButtonTapped()
+        }.disposed(by: disposeBag)
+    }
+    
+    func outputBindings() {
+        viewModel.outputs.shakeVerifyNumberTextFields
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.verifyTextField.codeTextFields.forEach({
+                    $0.shakeWithColorChange()
+                })
+            })
+            .disposed(by: disposeBag)
     }
 }

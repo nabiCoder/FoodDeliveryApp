@@ -8,7 +8,11 @@ class AppCoordinator: BaseCoordinator {
     
     override func start() {
         if userStorage.passedOnboarding {
-            showAuthFlow()
+            if userStorage.passedAuth {
+                showMainFlow()
+            } else {
+                showAuthFlow()
+            }
         } else {
             showOnboardingFlow()
         }

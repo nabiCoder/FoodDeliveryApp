@@ -79,9 +79,10 @@ struct SceneFactory {
         return enterNumberViewController
     }
     // MARK: - Verify Number
-    static func makeVerifyNumberScene(coordinator: AuthCoordinator) -> VerifyNumberViewController {
+    static func makeVerifyNumberScene(coordinator: AuthCoordinator, phoneNumber: String) -> VerifyNumberViewController {
         let verifyNumberViewModel = VerifyNumberViewModel(authCoordinator: coordinator)
-        let verifyNumberViewController = VerifyNumberViewController(verifyNumberViewOutput: verifyNumberViewModel)
+        let verifyNumberViewController = VerifyNumberViewController(viewModel: verifyNumberViewModel, 
+                                                                    phoneNumber: phoneNumber)
         
         return verifyNumberViewController
     }

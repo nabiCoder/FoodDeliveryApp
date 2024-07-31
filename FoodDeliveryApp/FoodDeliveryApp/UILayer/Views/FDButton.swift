@@ -31,8 +31,10 @@ class FDButton: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
     // MARK: - Action
     @objc private func buttonPressed() {
+        animateButtonPress()
         guard let action = self.action else { return }
         action()
     }
