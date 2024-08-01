@@ -67,8 +67,6 @@ struct SceneFactory {
         return passwordResetSuccessVC
     }
     // MARK: - Enter Number
-    
-    
     static func makeEnterNumberScene(coordinator: AuthCoordinator) -> EnterNumberViewController {
         let countryCodeArray = [CountryCode(name: "Russia", dialCode: "+7", code: "RU"),
                                 CountryCode(name: "USA", dialCode: "+1", code: "US"),
@@ -86,7 +84,8 @@ struct SceneFactory {
         
         return verifyNumberViewController
     }
-    
+    // MARK: - Home Scene
+    //static func make
     // MARK: - Main Flow
     static func makeMainFlow(appCoordinator: AppCoordinator,
                              finishDelegate: CoordinatorFinishDelegate,
@@ -96,7 +95,7 @@ struct SceneFactory {
                                               navigationController: homeNavigationController,
                                               finishDelegate: finishDelegate)
         homeNavigationController.tabBarItem = UITabBarItem(title: "Home",
-                                                           image: UIImage(systemName: "star"),
+                                                           image: UIImage(resource: .home),
                                                            tag: 0)
         appCoordinator.addChildCoordinator(homeCoordinator)
         homeCoordinator.start()
@@ -106,8 +105,8 @@ struct SceneFactory {
                                                   navigationController: searchNavigationController,
                                                   finishDelegate: finishDelegate)
         searchNavigationController.tabBarItem = UITabBarItem(title: "Search",
-                                                           image: UIImage(systemName: "star"),
-                                                           tag: 1)
+                                                             image: UIImage(resource: .search),
+                                                             tag: 1)
         appCoordinator.addChildCoordinator(searchCoordinator)
         searchCoordinator.start()
         
@@ -116,7 +115,7 @@ struct SceneFactory {
                                                   navigationController: ordersNavigationController,
                                                   finishDelegate: finishDelegate)
         ordersNavigationController.tabBarItem = UITabBarItem(title: "Orders",
-                                                           image: UIImage(systemName: "star"),
+                                                           image: UIImage(resource: .orders),
                                                            tag: 2)
         appCoordinator.addChildCoordinator(ordersCoordinator)
         ordersCoordinator.start()
@@ -126,7 +125,7 @@ struct SceneFactory {
                                                     navigationController: profileNavigationController,
                                                     finishDelegate: finishDelegate)
         profileNavigationController.tabBarItem = UITabBarItem(title: "Profile",
-                                                           image: UIImage(systemName: "star"),
+                                                              image: UIImage(resource: .profile),
                                                            tag: 3)
         appCoordinator.addChildCoordinator(profileCoordinator)
         profileCoordinator.start()

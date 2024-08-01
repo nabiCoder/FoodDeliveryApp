@@ -11,3 +11,8 @@ class HomeCoordinator: BaseCoordinator {
         print("AppCoordinator finish")
     }
 }
+private extension HomeCoordinator {
+    func showHomeScene() {
+        
+    }
+}
