@@ -2,9 +2,10 @@ import Foundation
 
 class HomeCoordinator: BaseCoordinator {
     
+    private let faktory = SceneFactory.self
+    
     override func start() {
-        let vc = ViewController()
-        navigationController?.pushViewController(vc, animated: true)
+        showHomeScene()
     }
     
     override func finish() {
@@ -13,6 +14,7 @@ class HomeCoordinator: BaseCoordinator {
 }
 private extension HomeCoordinator {
     func showHomeScene() {
-        
+        let homeVC = faktory.makeHomeScene(coordinator: self)
+        navigationController?.pushViewController(homeVC, animated: true)
     }
 }

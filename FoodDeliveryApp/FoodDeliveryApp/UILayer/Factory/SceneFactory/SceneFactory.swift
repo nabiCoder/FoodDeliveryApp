@@ -85,7 +85,12 @@ struct SceneFactory {
         return verifyNumberViewController
     }
     // MARK: - Home Scene
-    //static func make
+    static func makeHomeScene(coordinator: HomeCoordinator) -> HomeViewController {
+        let homeViewModel = HomeViewModel(homeCoordinator: coordinator)
+        let homeViewController = HomeViewController(viewModel: homeViewModel)
+        
+        return homeViewController
+    }
     // MARK: - Main Flow
     static func makeMainFlow(appCoordinator: AppCoordinator,
                              finishDelegate: CoordinatorFinishDelegate,

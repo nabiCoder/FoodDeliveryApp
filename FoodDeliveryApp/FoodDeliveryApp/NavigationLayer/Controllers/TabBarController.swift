@@ -38,7 +38,7 @@ class TabBarController: UITabBarController {
         additionalImageView?.removeFromSuperview()
         // Создаем новую дополнительную картинку
         additionalImageView = UIImageView(image: UIImage(resource: .active))
-        additionalImageView?.frame = CGRect(x: 0, y: 0, width: 14, height: 20) // Настройте размеры
+        additionalImageView?.frame = CGRect(x: 0, y: 0, width: 14, height: 20) 
         // Устанавливаем позицию дополнительной картинки в зависимости от выбранного таба
         if let tabBarItems = tabBar.items {
             let tabWidth = tabBar.frame.width / CGFloat(tabBarItems.count)
